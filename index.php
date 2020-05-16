@@ -3,6 +3,7 @@
 require_once ("_entete.inc.php");
 ?>
 <section>
+<img src="images/m2l.png">
 <h1>Bienvenue sur la plateforme M2L</h1>
 
 <fieldset>
