@@ -1,5 +1,5 @@
 <?php
-// Page d'inscription des utilisateurs
+// Page d'inscription des employés
 require_once ("_entete.inc.php");
 ?>
 <section>

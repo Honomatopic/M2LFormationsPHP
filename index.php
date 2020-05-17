@@ -2,8 +2,8 @@
 // Page d'accueil de l'application M2L
 require_once ("_entete.inc.php");
 ?>
-<section>
-<img src="images/m2l.png">
+
+
 <h1>Bienvenue sur la plateforme M2L</h1>
 
 <fieldset>
@@ -16,7 +16,7 @@ require_once ("_entete.inc.php");
 <input type="submit" name="connecter" value="Se connecter">
 </form>
 </fieldset>
-<a href="inscriptionutilisateur.php">Pour s'inscrire</a>
+<a href="inscriptionemploye.php">Pour s'inscrire</a>
 </section>
 <?php 
 require_once ("_piedpage.inc.php");
