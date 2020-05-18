@@ -1,90 +1,80 @@
 <?php
 require_once ("_entete.inc.php");
-if (!isset($_SESSION["email"])){
+if (! isset($_SESSION["email"])) {
     header("location:index.php");
 }
-/*$_SESSION["nom"] = (isset($_SESSION["nom"])) ? $_SESSION["nom"] : "";
- $_SESSION["prenom"] = (isset($_SESSION["prenom"])) ? $_SESSION["nom"] : "";
- $_SESSION["email"] = (isset($_SESSION["email"])) ? $_SESSION["email"] : "";
- $_SESSION["motpasse"] = (isset($_SESSION["motpasse"])) ? $_SESSION["motpasse"] : "";
- $_SESSION["statut"] = (isset($_SESSION["statut"])) ? $_SESSION["statut"] : "";*/
+
 ?>
-<header><form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post"><?php 
-echo "Bienvenue <a href=\"editerprofil?id=".$_SESSION["id"]."\">". $_SESSION["prenom"]."</a>";
+<header>
+	<form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post"><?php
+echo "Bienvenue <a href=\"editerprofil?id=" . $_SESSION["id"] . "\">" . $_SESSION["prenom"] . "</a>";
+echo "<br>";
+echo "<a href=\"espaceemploye.php\">&#128281; Revenir à l'espace employé</a>";
 ?> 
 
-<input type="submit" name="deconnecter" onclick="return confirm('Etes-vous sûr de vous déconnecter ?');" value="Se déconnecter"></form></header>
+<input type="submit" name="deconnecter"
+			onclick="return confirm('Etes-vous sûr de vous déconnecter ?');"
+			value="&#128272; Se déconnecter">
+	</form>
+</header>
 
-<h2>Pour s'inscrire à une formation c'est ici </h2>
+<h2>Pour s'inscrire à une formation c'est ici</h2>
 <table>
-<thead>
-<tr>
-<td>
-Identifiant
-</td>
-<td>
-Nom de la formation
-</td>
-<td>
-Date de début
-</td>
-<td>
-Date de fin
-</td>
-<td>
-Lieu
-</td>
-<td>
-Prestataire
-</td>
-<td>
-Inscription
-</td>
-<td>
-Désinscription
-</td>
-<?php 
-if ($_SESSION["statut"]==1) {
+	<thead>
+		<tr>
+			<td>Identifiant</td>
+			<td>Nom de la formation</td>
+			<td>Date de début</td>
+			<td>Date de fin</td>
+			<td>Lieu</td>
+			<td>Prestataire</td>
+			<td>S'inscrire</td>
+<?php
+if ($_SESSION["statut"] == 1) {
     echo "<td>Editer</td>";
     echo "<td>Supprimer</td>";
 }
 ?>
 </tr>
-</thead>
-<tbody>
+	</thead>
+	<tbody>
 
-<?php 
-$lesFormations = selectionnerTouteslesFormations();
-
-echo "<form action=\"".$_SERVER['PHP_SELF']." \"method=\"post\">";
+<?php
+$idinscris = $_SESSION["id"];
+$lesFormations = selectionnerTouteslesFormationsOuJeNeSuisPasInscris($idinscris);
+echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
 foreach ($lesFormations as $laFormation) {
-echo "<tr>";
-echo "<td><input type=\"hidden\" name=\"idformation\" value=".$laFormation["id"].">".$laFormation["id"]."</td>";
-echo $html = "<td><input type=\"hidden\" name=\"intitule\" value=\"".$laFormation["intitule"]."\">".$laFormation["intitule"]."</td>";
-var_dump($html);
-echo "<td><input type=\"hidden\" name=\"datedebut\" value=\"".$laFormation["datedebut"]."\">".$laFormation["datedebut"]."</td>";
-echo "<td><input type=\"hidden\" name=\"datefin\" value=\"".$laFormation["datefin"]."\">".$laFormation["datefin"]."</td>";
-echo "<td><input type=\"hidden\" name=\"lieu\" value=\"".$laFormation["lieu"]."\">".$laFormation["lieu"]."</td>";
-echo "<td><input type=\"hidden\" name=\"prestataire\" value=\"".$laFormation["prestataire"]."\">".$laFormation["prestataire"]."</td>";
-echo "<td><input type=\"submit\" name=\"inscrireformation\" value=\"S'inscrire\"></td>";
-echo "<td><input type=\"submit\" name=\"desinscrireformation\" value=\"Se désinscrire\"></td>";
-echo "<td><a href=\"editerformation.php?id=".$laFormation["id"]."\">Editer la formation</a></td>";
-echo "<td><a href=\"editerformation.php?id=".$laFormation["id"]."\">Supprimer la formation</a></td>";
-echo "<td><input type=\"hidden\" name=\"idsession\" value=".$_SESSION["id"]."></td>";
-echo "</tr>";
+
+    $idformation = $laFormation["id"];
+    $intitule = $laFormation["intitule"];
+    $datedebut = $laFormation["datedebut"];
+    $datefin = $laFormation["datefin"];
+    $lieu = $laFormation["lieu"];
+    $prestataire = $laFormation["prestataire"];
+    echo "<tr>";
+    echo "<td><input type=\"hidden\" name=\"idformation\" value=\"" . $idformation . "\">" . $idformation . "</td>";
+    echo "<td><input type=\"hidden\" name=\"intitule\" value=\"" . $intitule . "\">" . $intitule . "</td>";
+    echo "<td><input type=\"hidden\" name=\"datedebut\" value=\"" . $datedebut . "\">" . $datedebut . "</td>";
+    echo "<td><input type=\"hidden\" name=\"datefin\" value=\"" . $datefin . "\">" . $datefin . "</td>";
+    echo "<td><input type=\"hidden\" name=\"lieu\" value=\"" . $lieu . "\">" . $lieu . "</td>";
+    echo "<td><input type=\"hidden\" name=\"prestataire\" value=\"" . $prestataire . "\">" . $prestataire . "</td>";
+    echo "<td><a href=\"afficherformation.php?id=" . $laFormation["id"] . "\">&#128395; S'inscrire à cette formation</a></td>";
+    echo "<td><a href=\"editerformation.php?id=" . $laFormation["id"] . "\">&#x270F;&#xFE0F; Editer la formation</a></td>";
+    echo "<td><a href=\"editerformation.php?id=" . $laFormation["id"] . "\">&#x1F5D1;&#xFE0F; Supprimer la formation</a></td>";
+    echo "<td><input type=\"hidden\" name=\"idsession\" value=" . $idinscris . "></td>";
+    echo "</tr>";
 }
 echo "</form>";
 
-if ($_SESSION["statut"]=="1") {
-    echo "<a href=\"creerformation.php\">Pour créer une formation</a>";
+if ($_SESSION["statut"] == "1") {
+    echo "<a href=\"creerformation.php\">&#128271; Pour créer une formation</a>";
     echo "<br>";
 }
 ?>
 </tbody>
 </table>
 <br>
-<a href="sinscrireformation.php">Pour m'inscrire à une formation</a>
 
-<?php 
+<?php
 require_once ("_piedpage.inc.php");
 ?>

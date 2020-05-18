@@ -113,13 +113,15 @@ function creerUneFormation($intitule, $datedebut, $datefin, $lieu, $prestataire)
     return $resultat;
 }
 
-// La fonction selectionnerTouteslesFormations() permet de sélectionner toutes les formations
-function selectionnertouteslesFormations()
+// La fonction selectionnerTouteslesFormationsOuJeNeSuisPasInscris() permet de sélectionner toutes les formations
+function selectionnerTouteslesFormationsOuJeNeSuisPasInscris($idinscris)
 {
     $pdo = connexionBDD();
-    $sql = "SELECT * FROM formation";
+    $sql = "SELECT * FROM `formation` WHERE idinscris IS NULL OR idinscris!=:idinscris ";
     $pdoStatement = $pdo->prepare($sql);
-    $pdoStatement->execute();
+    $pdoStatement->execute(array(
+        ":idinscris" => $idinscris
+    ));
     $resultat = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
     $pdoStatement->closeCursor();
     return $resultat;
@@ -170,11 +172,11 @@ function editerLaFormation($id, $intitule, $datedebut, $datefin, $lieu, $prestat
     return $resultat;
 }
 
-// La fonction sinscrireAUneFormationAveclId() permet de - surprise - s'inscrire à une formation pour l'employé
-function sinscrireAUneFormationAveclId($intitule, $datedebut, $datefin, $lieu, $prestataire, $employeid)
+// La fonction sinscrireAUneFormationAveclId() permet - surprise - d'inscrire une formation pour l'employé
+function sinscrireAUneFormationAveclId($intitule, $datedebut, $datefin, $lieu, $prestataire, $idinscris)
 {
     $pdo = connexionBDD();
-    $sql = "INSERT INTO formation (intitule, datedebut, datefin, lieu, prestataire, Employe_id) VALUES (:intitule, :datedebut, :datefin, :lieu, :prestataire, :employeid)";
+    $sql = "INSERT INTO formation (intitule, datedebut, datefin, lieu, prestataire, idinscris) VALUES (:intitule, :datedebut, :datefin, :lieu, :prestataire, :idinscris)";
     $pdoStatement = $pdo->prepare($sql);
     $resultat = $pdoStatement->execute(array(
         ":intitule" => $intitule,
@@ -182,20 +184,35 @@ function sinscrireAUneFormationAveclId($intitule, $datedebut, $datefin, $lieu, $
         ":datefin" => $datefin,
         ":lieu" => $lieu,
         ":prestataire" => $prestataire,
-        ":employeid" => $employeid
+        ":idinscris" => $idinscris
     ));
     $pdoStatement->closeCursor();
     return $resultat;
 }
 
 // La fonction desinscrireAUneFormationAveclId() permet de se désinscrire à une formation et voilà
-function desinscrireAUneFormationAveclId($id) {
+function desinscrireAUneFormationAveclId($id)
+{
     $pdo = connexionBDD();
     $sql = "DELETE FROM formation WHERE id=:id";
     $pdoStatement = $pdo->prepare($sql);
     $resultat = $pdoStatement->execute(array(
         ":id" => $id
     ));
+    $pdoStatement->closeCursor();
+    return $resultat;
+}
+
+// La fonction selectionnerTouteslesFormationsOuJeSuisInscris() permet de sélectionner toutes les formations
+function selectionnerTouteslesFormationsOuJeSuisInscris($idinscris)
+{
+    $pdo = connexionBDD();
+    $sql = "SELECT * FROM `formation` WHERE idinscris=:idinscris ";
+    $pdoStatement = $pdo->prepare($sql);
+    $pdoStatement->execute(array(
+        ":idinscris" => $idinscris
+    ));
+    $resultat = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
     $pdoStatement->closeCursor();
     return $resultat;
 }

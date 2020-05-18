@@ -11,10 +11,8 @@ if (isset($_POST["inscrire"])) {
         $motpasse = $_POST["motpasse"];
         $statut = $_POST["statut"];
         inscriptionDunEmploye($nom, $prenom, $email, $motpasse, $statut);
-        header("location:index.php");
         echo "<section class=\"reussie\">Votre inscription a réussie</section>";
     } else {
-        header("location:index.php");
         echo "<section class=\"echoue\">Votre inscription a échoué</section>";
     }
 }
@@ -31,10 +29,8 @@ if (isset($_POST["connecter"], $_POST["email"], $_POST["motpasse"])) {
         $_SESSION["motpasse"] = $lemploye["motpasse"];
         $_SESSION["statut"] = $lemploye["statut"];
         echo "<section class=\"reussie\">Votre connexion a réussie</section>";
-        header("location:espaceemploye.php");
     } else {
         echo "<section class=\"echoue\">Votre connexion a échoué</section>";
-        header("location:index.php");
     }
 }
 
@@ -44,7 +40,6 @@ if (isset($_POST["supprimer"])) {
         $id = $_POST["id"];
         supprimerUnEmploye($id);
         echo "<section class=\"reussie\">Votre espace est supprimée</section>";
-        header("location:index.php");
     }
 }
 
@@ -58,10 +53,8 @@ if (isset($_POST["editer"])) {
         $motpasse = $_POST["motpasse"];
         $statut = $_POST["statut"];
         editerUnEmploye($id, $nom, $prenom, $email, $motpasse);
-        header("location:espaceemploye.php");
         echo "<section class=\"reussie\">Votre espace est bien édité</section>";
     } else {
-        header("location:espaceemploye.php");
         echo "<section class=\"echoue\">Votre espace n'est pas édité</section>";
     }
 }
@@ -83,10 +76,8 @@ if (isset($_POST["creer"])) {
         $lieu = $_POST["lieu"];
         $prestataire = $_POST["prestataire"];
         creerUneFormation($intitule, $datedebut, $datefin, $lieu, $prestataire);
-        header("location:espaceemploye.php");
         echo "<section class=\"reussie\">La formation est bien créée</section>";
     } else {
-        header("location:espaceemploye.php");
         echo "<section class=\"echoue\">La formation n'est pas créée</section>";
     }
 }
@@ -97,7 +88,6 @@ if (isset($_POST["supprimerformation"])) {
         $id = $_POST["id"];
         supprimerLaFormation($id);
         echo "<section class=\"reussie\">Votre formation est supprimée</section>";
-        header("location:sinscrireformation.php");
     }
 }
 
@@ -111,39 +101,34 @@ if (isset($_POST["editerformation"])) {
         $lieu = $_POST["lieu"];
         $prestataire = $_POST["prestataire"];
         editerLaFormation($id, $intitule, $datedebut, $datefin, $lieu, $prestataire);
-        header("location:sinscrireformation.php");
         echo "<section class=\"reussie\">Votre formation est bien édité</section>";
     } else {
-        header("location:sinscrireformation.php");
         echo "<section class=\"echoue\">Votre formation n'est pas édité</section>";
     }
 }
 
 // Algorithme permettant de s'inscrire à une formation
 if (isset($_POST["inscrireformation"])) {
-    if (isset($_POST["intitule"], $_POST["datedebut"], $_POST["datefin"], $_POST["lieu"], $_POST["prestataire"], $_POST["idsession"])){
+    if (isset($_POST["intitule"], $_POST["datedebut"], $_POST["datefin"], $_POST["lieu"], $_POST["prestataire"], $_POST["inscris"])) {
         $intitule = $_POST["intitule"];
         $datedebut = $_POST["datedebut"];
         $datefin = $_POST["datefin"];
         $lieu = $_POST["lieu"];
         $prestataire = $_POST["prestataire"];
-        $employeid = $_POST["idsession"];
-        sinscrireAUneFormationAveclId($intitule, $datedebut, $datefin, $lieu, $prestataire, $employeid);
-        header("location:sinscrireformation.php");
-        echo "<section class=\"reussie\">Votre formation est bien inscrite</section>";
+        $idinscris = $_POST["inscris"];
+        sinscrireAUneFormationAveclId($intitule, $datedebut, $datefin, $lieu, $prestataire, $idinscris);
+        echo "<section class=\"reussie\">Vous etes bien inscris à la formation</section>";
     } else {
-        header("location:sinscrireformation.php");
-        echo "<section class=\"echoue\">Votre formation n'est pas inscrite</section>";
+        echo "<section class=\"echoue\">Vous n'etes pas inscris à la formation</section>";
     }
 }
 
 // Algorithme qui permet de se désinscrire d'une formation
 if (isset($_POST["desinscrireformation"])) {
-    if (isset($_POST["idformation"])) {
-        $id = $_POST["idformation"];
+    if (isset($_POST["id"])) {
+        $id = $_POST["id"];
         desinscrireAUneFormationAveclId($id);
         echo "<section class=\"reussie\">Vous êtes désinscris de cette formation</section>";
-        header("location:sinscrireformation.php");
     }
 }
 

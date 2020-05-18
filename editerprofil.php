@@ -31,7 +31,9 @@ if (isset($_GET["id"])) {
 				value="Supprimer">
 		</form>
 	</fieldset>
-
+echo "
+<a href=\"espaceemploye.php\">Revenir à l'espace employé</a>
+";
 <?php
 require_once ("_piedpage.inc.php");
 ?>
