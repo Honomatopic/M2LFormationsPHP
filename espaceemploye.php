@@ -3,13 +3,6 @@ require_once("_entete.inc.php");
 if (!isset($_SESSION["email"])) {
     header("location:index.php");
 }
-/*
- * $_SESSION["nom"] = (isset($_SESSION["nom"])) ? $_SESSION["nom"] : "";
- * $_SESSION["prenom"] = (isset($_SESSION["prenom"])) ? $_SESSION["nom"] : "";
- * $_SESSION["email"] = (isset($_SESSION["email"])) ? $_SESSION["email"] : "";
- * $_SESSION["motpasse"] = (isset($_SESSION["motpasse"])) ? $_SESSION["motpasse"] : "";
- * $_SESSION["statut"] = (isset($_SESSION["statut"])) ? $_SESSION["statut"] : "";
- */
 
 ?>
 <header>
@@ -53,12 +46,12 @@ if (!isset($_SESSION["email"])) {
             $lieu = $laFormation["lieu"];
             $prestataire = $laFormation["prestataire"];
             echo "<tr>";
-            echo "<td><input type=\"hidden\" name=\"idformation\" value=\"" . $idformation . "\">" . $idformation . "</td>";
-            echo "<td><input type=\"hidden\" name=\"intitule\" value=\"" . $intitule . "\">" . $intitule . "</td>";
-            echo "<td><input type=\"hidden\" name=\"datedebut\" value=\"" . $datedebut . "\">" . $datedebut . "</td>";
-            echo "<td><input type=\"hidden\" name=\"datefin\" value=\"" . $datefin . "\">" . $datefin . "</td>";
-            echo "<td><input type=\"hidden\" name=\"lieu\" value=\"" . $lieu . "\">" . $lieu . "</td>";
-            echo "<td><input type=\"hidden\" name=\"prestataire\" value=\"" . $prestataire . "\">" . $prestataire . "</td>";
+            echo "<td>$idformation</td>";
+            echo "<td>$intitule</td>";
+            echo "<td>$datedebut</td>";
+            echo "<td>$datefin</td>";
+            echo "<td>$lieu</td>";
+            echo "<td>$prestataire</td>";
             echo "<td><a href=\"espaceemploye.php?eemploye_id=" . $_SESSION["id"] . "&fformation_id=" . $laFormation["id"] . "\">&#128465;&#65039; Me désinscrire de cette formation</a></td>";
             echo "<td><a href=\"editerformation.php?id=" . $laFormation["id"] . "\">&#128397;&#65039; Editer la formation</a></td>";
             echo "<td><a href=\"editerformation.php?id=" . $laFormation["id"] . "\">&#128465;&#65039; Supprimer la formation</a></td>";

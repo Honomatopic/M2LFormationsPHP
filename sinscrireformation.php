@@ -51,12 +51,12 @@ foreach ($lesFormations as $laFormation) {
     $lieu = $laFormation["lieu"];
     $prestataire = $laFormation["prestataire"];
     echo "<tr>";
-    echo "<td><input type=\"hidden\" name=\"idformation\" value=\"" . $idformation . "\">" . $idformation . "</td>";
-    echo "<td><input type=\"hidden\" name=\"intitule\" value=\"" . $intitule . "\">" . $intitule . "</td>";
-    echo "<td><input type=\"hidden\" name=\"datedebut\" value=\"" . $datedebut . "\">" . $datedebut . "</td>";
-    echo "<td><input type=\"hidden\" name=\"datefin\" value=\"" . $datefin . "\">" . $datefin . "</td>";
-    echo "<td><input type=\"hidden\" name=\"lieu\" value=\"" . $lieu . "\">" . $lieu . "</td>";
-    echo "<td><input type=\"hidden\" name=\"prestataire\" value=\"" . $prestataire . "\">" . $prestataire . "</td>";
+    echo "<td>$idformation</td>";
+    echo "<td>$intitule</td>";
+    echo "<td>$datedebut</td>";
+    echo "<td>$datefin</td>";
+    echo "<td>$lieu</td>";
+    echo "<td>$prestataire</td>";
     echo "<td><a href=\"sinscrireformation.php?employe_id=" . $_SESSION["id"] . "&formation_id=" . $laFormation["id"] . "\">&#128395;&#65039; M'inscrire de cette formation</a></td>";
     if ($_SESSION["statut"] == "1") {
     echo "<td><a href=\"editerformation.php?id=" . $laFormation["id"] . "\">&#128397;&#65039; Editer la formation</a></td>";
