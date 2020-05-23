@@ -40,8 +40,7 @@ if ($_SESSION["statut"] == 1) {
 	<tbody>
 
 <?php
-$idinscris = $_SESSION["id"];
-$lesFormations = selectionnerTouteslesFormationsOuJeNeSuisPasInscris($idinscris);
+$lesFormations = selectionnerTouteslesFormations();
 echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
 foreach ($lesFormations as $laFormation) {
 
@@ -58,10 +57,11 @@ foreach ($lesFormations as $laFormation) {
     echo "<td><input type=\"hidden\" name=\"datefin\" value=\"" . $datefin . "\">" . $datefin . "</td>";
     echo "<td><input type=\"hidden\" name=\"lieu\" value=\"" . $lieu . "\">" . $lieu . "</td>";
     echo "<td><input type=\"hidden\" name=\"prestataire\" value=\"" . $prestataire . "\">" . $prestataire . "</td>";
-    echo "<td><a href=\"afficherformation.php?id=" . $laFormation["id"] . "\">&#128395; S'inscrire à cette formation</a></td>";
-    echo "<td><a href=\"editerformation.php?id=" . $laFormation["id"] . "\">&#x270F;&#xFE0F; Editer la formation</a></td>";
-    echo "<td><a href=\"editerformation.php?id=" . $laFormation["id"] . "\">&#x1F5D1;&#xFE0F; Supprimer la formation</a></td>";
-    echo "<td><input type=\"hidden\" name=\"idsession\" value=" . $idinscris . "></td>";
+    echo "<td><a href=\"sinscrireformation.php?employe_id=" . $_SESSION["id"] . "&formation_id=" . $laFormation["id"] . "\">&#128395;&#65039; M'inscrire de cette formation</a></td>";
+    if ($_SESSION["statut"] == "1") {
+    echo "<td><a href=\"editerformation.php?id=" . $laFormation["id"] . "\">&#128397;&#65039; Editer la formation</a></td>";
+    echo "<td><a href=\"editerformation.php?id=" . $laFormation["id"] . "\">&#128465;&#65039; Supprimer la formation</a></td>";
+    }
     echo "</tr>";
 }
 echo "</form>";
