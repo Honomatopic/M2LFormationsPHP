@@ -109,19 +109,22 @@ if (isset($_POST["editerformation"])) {
 }
 
 // Algorithme permettant de s'inscrire à une formation
-if (isset($_GET["employe_id"], $_GET["formation_id"])) {
-    $employe_id = $_GET["employe_id"];
-    $formation_id = $_GET["formation_id"];
-    sinscrireAUneFormation($employe_id, $formation_id);
-    echo "<section class=\"reussie\">Vous etes bien inscris à la formation</section>";
-} else {
-    echo "<section class=\"echoue\">Vous n'etes pas inscris à la formation</section>";
+if (isset($_GET)) {
+    if (isset($_GET["employe_id"], $_GET["formation_id"])) {
+        $employe_id = $_GET["employe_id"];
+        $formation_id = $_GET["formation_id"];
+        sinscrireAUneFormation($employe_id, $formation_id);
+        echo "<section class=\"reussie\">Vous etes bien inscris à la formation</section>";
+    } else {
+        echo "<section class=\"echoue\">Vous n'etes pas inscris à la formation</section>";
+    }
 }
-
 // Algorithme qui permet de se désinscrire d'une formation
-if (isset($_GET["eemploye_id"], $_GET["fformation_id"])) {
-    $employe_id = $_GET["eemploye_id"];
-    $formation_id = $_GET["fformation_id"];
-    SeDesinscrireAMaFormation($employe_id, $formation_id);
-    echo "<section class=\"reussie\">Vous êtes désinscris de cette formation</section>";
+if (isset($_GET)) {
+    if (isset($_GET["eemploye_id"], $_GET["fformation_id"])) {
+        $employe_id = $_GET["eemploye_id"];
+        $formation_id = $_GET["fformation_id"];
+        SeDesinscrireAMaFormation($employe_id, $formation_id);
+        echo "<section class=\"reussie\">Vous êtes désinscris de cette formation</section>";
+    }
 }
