@@ -4,7 +4,7 @@ require_once ("_entete.inc.php");
 ?>
 
 
-<h1>Bienvenue sur la plateforme M2L</h1>
+<h1>Bienvenue sur le site M2L</h1>
 
 <fieldset>
 	<legend>Pour vous connecter</legend>

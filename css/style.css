@@ -1,4 +1,3 @@
-/*@charset "ISO-8859-1";*/
 body {
 	font-family: 'Calibri';
 	font-size: 20px;
@@ -13,14 +12,22 @@ table {
 	border-width: 1px;
 	border-style: solid;
 	border-color: black;
-	width: 50%;
+	width: 70%;
+	font-size: 20px;
+}
+
+th {
+	border-width: 1px;
+	border-style: solid;
+	border-color: black;
+	width: 70%;
 }
 
 td {
 	border-width: 1px;
 	border-style: solid;
 	border-color: black;
-	width: 50%;
+	width: 70%;
 }
 
 hr {
