@@ -28,7 +28,8 @@ echo "<a href=\"espaceemploye.php\">&#128281; Revenir à l'espace employé</a>";
 			<td>Date de fin</td>
 			<td>Lieu</td>
 			<td>Prestataire</td>
-			<td>S'inscrire</td>
+            <td>S'inscrire</td>
+            <td>Lire</td>
 <?php
 if ($_SESSION["statut"] == 1) {
     echo "<td>Editer</td>";
@@ -40,7 +41,7 @@ if ($_SESSION["statut"] == 1) {
 	<tbody>
 
 <?php
-$lesFormations = selectionnerTouteslesFormations();
+$lesFormations = lireTouteslesFormations();
 echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
 foreach ($lesFormations as $laFormation) {
 
@@ -58,6 +59,7 @@ foreach ($lesFormations as $laFormation) {
     echo "<td>$lieu</td>";
     echo "<td>$prestataire</td>";
     echo "<td><a href=\"sinscrireformation.php?employe_id=" . $_SESSION["id"] . "&formation_id=" . $laFormation["id"] . "\">&#128395;&#65039; M'inscrire de cette formation</a></td>";
+    echo "<td><a href=\"lireformation.php?id=" . $laFormation["id"] . "\">&#128270; Lire la formation</a></td>";
     if ($_SESSION["statut"] == "1") {
     echo "<td><a href=\"editerformation.php?id=" . $laFormation["id"] . "\">&#128397;&#65039; Editer la formation</a></td>";
     echo "<td><a href=\"editerformation.php?id=" . $laFormation["id"] . "\">&#128465;&#65039; Supprimer la formation</a></td>";

@@ -52,7 +52,7 @@ form {
 	text-align: center;
 }
 
-input, select {
+input, select, button {
 	font-family: 'Calibri';
 	font-size: 20px;
 	text-align: center;

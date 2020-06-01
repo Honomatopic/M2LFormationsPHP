@@ -24,6 +24,7 @@ if (!isset($_SESSION["email"])) {
             <td>Date de fin</td>
             <td>Lieu</td>
             <td>Prestataire</td>
+            <td>Voir</td>
             <td>Se désinscrire</td>
             <?php
             if ($_SESSION["statut"] == 1) {
@@ -35,7 +36,7 @@ if (!isset($_SESSION["email"])) {
     </thead>
     <tbody>
         <?php
-        $lesFormations = selectionnerMesFormations($_SESSION["id"]);
+        $lesFormations = lireMesFormations($_SESSION["id"]);
         echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
         foreach ($lesFormations as $laFormation) {
 
@@ -52,6 +53,7 @@ if (!isset($_SESSION["email"])) {
             echo "<td>$datefin</td>";
             echo "<td>$lieu</td>";
             echo "<td>$prestataire</td>";
+            echo "<td><a href=\"lireformation.php?id=" . $laFormation["id"] . "\">&#128270; Voir la formation</a></td>";
             echo "<td><a href=\"espaceemploye.php?eemploye_id=" . $_SESSION["id"] . "&fformation_id=" . $laFormation["id"] . "\">&#128465;&#65039; Me désinscrire de cette formation</a></td>";
             echo "<td><a href=\"editerformation.php?id=" . $laFormation["id"] . "\">&#128397;&#65039; Editer la formation</a></td>";
             echo "<td><a href=\"editerformation.php?id=" . $laFormation["id"] . "\">&#128465;&#65039; Supprimer la formation</a></td>";
@@ -60,7 +62,7 @@ if (!isset($_SESSION["email"])) {
         echo "</form>";
 
         if ($_SESSION["statut"] == "1") {
-            echo "<a href=\"creerformation.php\">&#128271; Pour créer une formation</a>";
+            echo "<a href=\"creerformation.php\">&#128395; Pour créer une formation</a>";
             echo "<br>";
         };
         ?>

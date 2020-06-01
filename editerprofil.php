@@ -3,7 +3,7 @@
 require_once ("_entete.inc.php");
 if (isset($_GET["id"])) {
     $id = $_GET["id"];
-    $lemploye = selectionnerUnEmployeParlId($id);
+    $lemploye = lireUnEmployeParlId($_GET["id"]);
     $nom = $lemploye["nom"];
     $prenom = $lemploye["prenom"];
     $email = $lemploye["email"];
@@ -25,15 +25,13 @@ if (isset($_GET["id"])) {
 				<option value="<?php echo $statut; ?>"><?php echo $statut; ?></option>
 				<option value="0">0</option>
 				<option value="1">1</option>
-			</select> <br> <input type="submit" name="editer" value="Editer"> <input
+			</select> <br> <input type="submit" name="editer" value="&#128397;&#65039; Editer"> <input
 				type="submit" name="supprimer"
 				onclick="return confirm('Etes-vous sûr de supprimer votre profil ?');"
-				value="Supprimer">
+				value="&#128465;&#65039; Supprimer">
 		</form>
 	</fieldset>
-echo "
-<a href=\"espaceemploye.php\">Revenir à l'espace employé</a>
-";
+<a href="espaceemploye.php">Revenir à l'espace employé</a>
 <?php
 require_once ("_piedpage.inc.php");
 ?>

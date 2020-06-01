@@ -31,7 +31,7 @@ function inscriptionDunEmploye($nom, $prenom, $email, $motpasse, $statut)
         ":nom" => $nom,
         ":prenom" => $prenom,
         ":email" => $email,
-        ":motpasse" => md5($motpasse),
+        ":motpasse" => password_hash($motpasse, PASSWORD_DEFAULT),
         ":statut" => $statut
     ));
     $pdoStatement->closeCursor();
@@ -52,8 +52,8 @@ function seConnecter($email)
     return $resultat;
 }
 
-// La fonction selectionnerUnEmployeParlId($id) permet d'afficher dans un formulaire les informations d'un employe
-function selectionnerUnEmployeParlId($id)
+// La fonction lireUnEmployeParlId($id) permet d'afficher dans un formulaire les informations d'un employe
+function lireUnEmployeParlId($id)
 {
     $pdo = connexionBDD();
     $sql = "SELECT * FROM employe WHERE id=:id";
@@ -79,17 +79,18 @@ function supprimerUnEmploye($id)
     return $resultat;
 }
 
-// La fonction editerUnEmploye($id, $nom, $prenom, $email, $motpasse) permet d'éditer les informations d'un utilisateur grâce à l'id
-function editerUnEmploye($id, $nom, $prenom, $email, $motpasse)
+// La fonction editerUnEmploye($id, $nom, $prenom, $email, $motpasse, $statut) permet d'éditer les informations d'un utilisateur grâce à l'id
+function editerUnEmploye($id, $nom, $prenom, $email, $motpasse, $statut)
 {
     $pdo = connexionBDD();
-    $sql = "UPDATE employe SET nom=:nom, prenom=:prenom, email=:email, motpasse=:motpasse WHERE id=:id";
+    $sql = "UPDATE employe SET nom=:nom, prenom=:prenom, email=:email, motpasse=:motpasse, statut=:statut WHERE id=:id";
     $pdoStatement = $pdo->prepare($sql);
     $resultat = $pdoStatement->execute(array(
         ":nom" => $nom,
         ":prenom" => $prenom,
         ":email" => $email,
-        ":motpasse" => sha1($motpasse),
+        ":motpasse" => $motpasse,
+        ":statut" => $statut,
         ":id" => $id
     ));
     $pdoStatement->closeCursor();
@@ -113,8 +114,8 @@ function creerUneFormation($intitule, $datedebut, $datefin, $lieu, $prestataire)
     return $resultat;
 }
 
-// La fonction selectionnerTouteslesFormations() permet de sélectionner toutes les formations
-function selectionnerTouteslesFormations()
+// La fonction lireTouteslesFormations() permet de sélectionner toutes les formations
+function lireTouteslesFormations()
 {
     $pdo = connexionBDD();
     $sql = "SELECT * FROM `formation`";
@@ -125,8 +126,8 @@ function selectionnerTouteslesFormations()
     return $resultat;
 }
 
-// La fonction selectionnerLaFormationParlId() permet de selectionner une formation par, devinez quoi ?, l'id
-function selectionnerLaFormationParlId($id)
+// La fonction lireLaFormationParlId() permet de selectionner une formation par, devinez quoi ?, l'id
+function lireLaFormationParlId($id)
 {
     $pdo = connexionBDD();
     $sql = "SELECT * FROM formation WHERE id=:id";
@@ -198,8 +199,8 @@ function SeDesinscrireAMaFormation($employe_id, $formation_id)
     return $resultat;
 }
 
-// La fonction selectionnerMesFormations($employe_id) permet de sélectionner toutes mes formations
-function selectionnerMesFormations($employe_id)
+// La fonction lireMesFormations($employe_id) permet de sélectionner toutes mes formations
+function lireMesFormations($employe_id)
 {
     $pdo = connexionBDD();
     $sql = "SELECT * FROM formation LEFT JOIN inscrire ON formation.id = inscrire.Formation_id WHERE inscrire.Employe_id =:employe_id";

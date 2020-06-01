@@ -2,7 +2,7 @@
 require_once("_entete.inc.php");
 if (isset($_GET["id"])) {
 	$id = $_GET["id"];
-	$laformation = selectionnerLaFormationParlId($id);
+	$laformation = lireLaFormationParlId($_GET["id"]);
 	$intitule = $laformation["intitule"];
 	$datedebut = $laformation["datedebut"];
 	$datefin = $laformation["datefin"];
@@ -31,7 +31,7 @@ if (isset($_GET["id"])) {
 			<option value="CNAM">CNAM</option>
 			<option value="GRETA">GRETA</option>
 			<option value="Privé">Privé</option>
-		</select> <br> <input type="submit" name="editerformation" value="Editer"> <br> <input type="submit" name="supprimerformation" onclick="return confirm('Etes-vous sûr de supprimer cette formation ?');" value="Supprimer">
+		</select> <br> <input type="submit" name="editerformation" value="&#128397;&#65039; Editer"> <br> <input type="submit" name="supprimerformation" onclick="return confirm('Etes-vous sûr de supprimer cette formation ?');" value="&#128465;&#65039; Supprimer">
 	</form>
 	<br>
 	<a href="sinscrireformation.php">&#128269; Voir les formations</a>

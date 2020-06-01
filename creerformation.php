@@ -24,7 +24,7 @@
 			<option value="CNAM">CNAM</option>
 			<option value="GRETA">GRETA</option>
 			<option value="Privé">Privé</option>
-		</select> <br> <input type="submit" name="creer" value="&#128271; Créer">
+		</select> <br> <input type="submit" name="creer" value="&#128395; Créer">
 	</form>
 
 </fieldset>
