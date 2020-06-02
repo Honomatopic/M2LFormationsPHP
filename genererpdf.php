@@ -1,23 +1,28 @@
 <?php
+require_once ("_gestionBase.inc.php");
 require_once 'dompdf/autoload.inc.php';
 use Dompdf\Dompdf;
 use Dompdf\Options;
-$html = require_once ("_entete.inc.php");
-     
-$laformation = lireLaFormationParlId($_GET["id"]);
-$html .="<p>".$laformation["id"]."</p>";
-$html .="<p>".$laformation["intitule"]."</p>";
-$html .="<p>".$laformation["datedebut"]."</p>";
-$html .="<p>".$laformation["datefin"]."</p>";
-$html .="<p>".$laformation["lieu"]."</p>";
-$html .= "<p>".$laformation["prestataire"]."</p>";
-
-$html .=require_once ("_piedpage.inc.php");
-
-$dompdf = new DOMPDF();
+$dompdf = new Dompdf();
 $options = new Options();
-$options->setIsPhpEnabled(true);
-$dompdf->setPaper('A4', 'landscape');
+
+$laformation = lireLaFormationParlId($_GET["id"]);
+$html = "<link type=\"text/css\" rel=\"stylesheet\" href=\"css/style.css\">";
+$html .= "<img alt=\"Logo\" src=\"images/m2l.png\">";
+$html .= "<p>".$laformation["id"]."</p>";
+$html .= "<p>".$laformation["intitule"]."</p>";
+$html .= "<p>".$laformation["datedebut"]."</p>";
+$html .= "<p>".$laformation["datefin"]."</p>";
+$html .= "<p>".$laformation["lieu"]."</p>";
+$html .= "<p>".$laformation["prestataire"]."</p>";
+$html .= "<hr>";
+$html .= "&copy ".date('Y')." Honoré Rasamoelina";
+
 $dompdf->loadHtml($html);
+$options->set('isPhpEnabled', true);
+$dompdf->setPaper('A4', 'landscape');
 $dompdf->render();
-$dompdf->stream("formation".$_GET["id"].".pdf", array("Attachment" => true));
+$dompdf->stream("pdf/".$laformation["intitule"].".pdf", array("Attachment" => true));
+file_put_contents("pdf/".$laformation["intitule"].".pdf", $dompdf->output());
+
+?>
