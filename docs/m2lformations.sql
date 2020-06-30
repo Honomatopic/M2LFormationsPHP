@@ -43,6 +43,10 @@ CREATE TABLE IF NOT EXISTS `employe` (
 -- Déchargement des données de la table `employe`
 --
 
+INSERT INTO `employe` (`id`, `nom`, `prenom`, `email`, `motpasse`, `statut`) VALUES
+(1, 'Rasamoelina', 'Honoré', 'honore.rasamoelina@gmail.com', '$2y$10$9XuyDFh/a..oVB/ehtM2c.aXm44iHWNRJ5M.ZCLs0pdIqakTpZkP6', 1),
+(2, 'Poupard', 'Diane', 'diane.poupard@gmail.com', '$2y$10$Y72434LxyggJ6B23SGBKIeDzzI4viyubto3YQnwrNqKnuMbsWvsFC', 0),
+(3, 'De Giovanni Debord', 'Ségolène', 'segolene.degiovanni@gmail.com', '$2y$10$sldYChoUEyKe5R4qfTJFtemp8Nxd/yCb4mL1OcRO6Z4a27Bohcr7a', 0);
 
 -- --------------------------------------------------------
 

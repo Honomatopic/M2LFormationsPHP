@@ -3,7 +3,7 @@
 	<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"><?php
 																		echo "Bienvenue <a href=\"editerprofil?id=" . $_SESSION["id"] . "\">" . $_SESSION["prenom"] . "</a>";
 																		echo "<br>";
-																		echo "<a href=\"espaceemploye.php\">&#128281; Revenir à l'espace employé</a>";
+																		echo "<a href=\"espaceadherent.php\">&#128281; Revenir à l'espace employé</a>";
 																		echo "<br>";
 																		echo "<a href=\"sinscrireformation.php\">&#128281; Revenir aux formations disponibles</a>";
 																		?>

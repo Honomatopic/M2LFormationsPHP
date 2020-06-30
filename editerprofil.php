@@ -3,12 +3,12 @@
 require_once ("_entete.inc.php");
 if (isset($_GET["id"])) {
     $id = $_GET["id"];
-    $lemploye = lireUnEmployeParlId($_GET["id"]);
-    $nom = $lemploye["nom"];
-    $prenom = $lemploye["prenom"];
-    $email = $lemploye["email"];
-    $motpasse = $lemploye["motpasse"];
-    $statut = $lemploye["statut"];
+    $ladherent = lireUnAdherentParlId($_GET["id"]);
+    $nom = $ladherent["nom"];
+    $prenom = $ladherent["prenom"];
+    $email = $ladherent["email"];
+    $motpasse = $ladherent["motpasse"];
+    $statut = $ladherent["statut"];
 }
 ?>
 
@@ -31,7 +31,7 @@ if (isset($_GET["id"])) {
 				value="&#128465;&#65039; Supprimer">
 		</form>
 	</fieldset>
-<a href="espaceemploye.php">Revenir à l'espace employé</a>
+<a href="espaceadherent.php">Revenir à l'espace employé</a>
 <?php
 require_once ("_piedpage.inc.php");
 ?>

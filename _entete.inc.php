@@ -1,7 +1,13 @@
 <?php
 session_start();
 require_once ("_gestionBase.inc.php");
-require_once ("_traitement.inc.php");
+require_once ("connexion.traitement.php");
+require_once ("deconnexion.traitement.php");
+require_once ("creation.traitement.php");
+require_once ("suppression.traitement.php");
+require_once ("edition.traitement.php");
+require_once ("inscription.traitement.php");
+require_once ("desinscription.traitement.php");
 ?>
 
 <!DOCTYPE html>
