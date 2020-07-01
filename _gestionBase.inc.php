@@ -171,8 +171,8 @@ function lireLaFormationParlId($id)
     return $resultat;
 }
 
-// La fonction sinscrireAUneFormation() permet - surprise - d'inscrire une formation pour l'adherent
-function sinscrireAUneFormation($adherent_id, $formation_id)
+// La fonction sinscrireAMaFormation() permet - surprise - d'inscrire une formation pour l'adherent
+function sinscrireAMaFormation($adherent_id, $formation_id)
 {
     $pdo = connexionBDD();
     $sql = "INSERT INTO inscrire (Adherent_id, Formation_id) VALUES (:adherent_id, :formation_id)";

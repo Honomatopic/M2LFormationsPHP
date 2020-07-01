@@ -30,12 +30,7 @@ echo "<a href=\"espaceadherent.php\">&#128281; Revenir à l'espace employé</a>"
 			<td>Prestataire</td>
             <td>S'inscrire</td>
             <td>Lire</td>
-<?php
-if ($_SESSION["statut"] == 1) {
-    echo "<td>Editer</td>";
-    echo "<td>Supprimer</td>";
-}
-?>
+
 </tr>
 	</thead>
 	<tbody>
@@ -60,18 +55,9 @@ foreach ($lesFormations as $laFormation) {
     echo "<td>$prestataire</td>";
     echo "<td><a href=\"sinscrireformation.php?adherent_id=" . $_SESSION["id"] . "&formation_id=" . $laFormation["id"] . "\">&#128395;&#65039; M'inscrire de cette formation</a></td>";
     echo "<td><a href=\"lireformation.php?id=" . $laFormation["id"] . "\">&#128270; Lire la formation</a></td>";
-    if ($_SESSION["statut"] == "1") {
-    echo "<td><a href=\"editerformation.php?id=" . $laFormation["id"] . "\">&#128397;&#65039; Editer la formation</a></td>";
-    echo "<td><a href=\"editerformation.php?id=" . $laFormation["id"] . "\">&#128465;&#65039; Supprimer la formation</a></td>";
-    }
     echo "</tr>";
 }
 echo "</form>";
-
-if ($_SESSION["statut"] == "1") {
-    echo "<a href=\"creerformation.php\">&#128271; Pour créer une formation</a>";
-    echo "<br>";
-}
 ?>
 </tbody>
 </table>
