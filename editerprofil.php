@@ -31,7 +31,7 @@ if (isset($_GET["id"])) {
 				value="&#128465;&#65039; Supprimer">
 		</form>
 	</fieldset>
-<a href="espaceadherent.php">Revenir à l'espace employé</a>
+<a href="espaceadherent.php">Revenir à l'espace adhérent</a>
 <?php
 require_once ("_piedpage.inc.php");
 ?>
