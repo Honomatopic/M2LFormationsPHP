@@ -12,7 +12,7 @@ if (isset($_GET["id"])) {
 ?>
 <header>
 	<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"><?php
-																		echo "Bienvenue <a href=\"editerprofil?id=" . $_SESSION["id"] . "\">" . $_SESSION["prenom"] . "</a>";
+																		echo "Bienvenue <a href=\"editionprofil?id=" . $_SESSION["id"] . "\">" . $_SESSION["prenom"] . "</a>";
 																		echo "<br>";
 																		echo "<a href=\"espaceadherent.php\">Revenir à l'espace adhérent</a>";
 																		?>

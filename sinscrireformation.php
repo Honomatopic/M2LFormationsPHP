@@ -7,7 +7,7 @@ if (! isset($_SESSION["email"])) {
 ?>
 <header>
 	<form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post"><?php
-echo "Bienvenue <a href=\"editerprofil?id=" . $_SESSION["id"] . "\">" . $_SESSION["prenom"] . "</a>";
+echo "Bienvenue <a href=\"editionprofil?id=" . $_SESSION["id"] . "\">" . $_SESSION["prenom"] . "</a>";
 echo "<br>";
 echo "<a href=\"espaceadherent.php\">&#128281; Revenir à l'espace adhérent</a>";
 ?> 

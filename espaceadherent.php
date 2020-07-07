@@ -7,7 +7,7 @@ if (!isset($_SESSION["email"])) {
 ?>
 <header>
     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"><?php
-                                                                        echo "Bienvenue <a href=\"editerprofil?id=" . $_SESSION["id"] . "\">" . $_SESSION["prenom"] . "</a>";
+                                                                        echo "Bienvenue <a href=\"editionprofil?id=" . $_SESSION["id"] . "\">" . $_SESSION["prenom"] . "</a>";
                                                                         ?>
 
         <input type="submit" name="deconnecter" onclick="return confirm('Etes-vous sûr de vous déconnecter ?');" value="&#128272; Se déconnecter">
@@ -58,6 +58,10 @@ if (!isset($_SESSION["email"])) {
         ?>
     </tbody>
 </table>
+<br>
+<?php if(isset($_SESSION["statut"])==1) : ?>
+    <a href="listeadherents.php">&#128269; Voir tous les adhérents</a>
+<?php endif; ?>
 <br>
 <a href="sinscrireformation.php">&#128269; Voir les formations</a>
 <?php

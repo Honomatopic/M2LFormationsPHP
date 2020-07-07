@@ -66,6 +66,18 @@ function lireUnAdherentParlId($id)
     return $resultat;
 }
 
+// La fonction lireTouslesAdherents() permet de lire tus les adhérents
+function lireTouslesAdherents()
+{
+    $pdo = connexionBDD();
+    $sql = "SELECT * FROM adherent";
+    $pdoStatement = $pdo->prepare($sql);
+    $pdoStatement->execute();
+    $resultat = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+    $pdoStatement->closeCursor();
+    return $resultat;
+}
+
 // La fonction supprimerUnAdherent($id) permet de supprimer un adherent avec le bouton supprimer du formulaire d'édition
 function supprimerUnAdherent($id)
 {
