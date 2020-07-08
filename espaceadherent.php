@@ -26,7 +26,7 @@ if (!isset($_SESSION["email"])) {
             <td>Prestataire</td>
             <td>Voir</td>
             <td>Se désinscrire</td>
-            
+
         </tr>
     </thead>
     <tbody>
@@ -54,12 +54,11 @@ if (!isset($_SESSION["email"])) {
             echo "</tr>";
         }
         echo "</form>";
-
         ?>
     </tbody>
 </table>
 <br>
-<?php if(isset($_SESSION["statut"])==1) : ?>
+<?php if (($_SESSION["statut"]) == "1") : ?>
     <a href="listeadherents.php">&#128269; Voir tous les adhérents</a>
 <?php endif; ?>
 <br>
