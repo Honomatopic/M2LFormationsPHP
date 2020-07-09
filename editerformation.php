@@ -31,9 +31,10 @@ if (isset($_GET["id"])) {
 			<option value="CNAM">CNAM</option>
 			<option value="GRETA">GRETA</option>
 			<option value="Privé">Privé</option>
-		</select> <br> <input type="submit" name="editerformation" value="&#128397;&#65039; Editer"> <br> <input type="submit" name="supprimerformation" onclick="return confirm('Etes-vous sûr de supprimer cette formation ?');" value="&#128465;&#65039; Supprimer">
+		</select> <br> <input type="submit" name="editerformation" value="&#128397;&#65039; Editer"> &nbsp; <input type="submit" name="supprimerformation" onclick="return confirm('Etes-vous sûr de supprimer cette formation ?');" value="&#128465;&#65039; Supprimer">
 	</form>
-	<br>
 </fieldset>
 <a href="sinscrireformation.php">&#128269; Voir les formations</a>
+<br>
+<a href="creerformation.php">&#128395; Pour créer une formation, c'est ici</a>
 <?php require_once("_piedpage.inc.php"); ?>

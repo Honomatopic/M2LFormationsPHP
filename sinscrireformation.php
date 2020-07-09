@@ -65,6 +65,7 @@ echo "</form>";
 ?>
 </tbody>
 </table>
+<a href="creerformation.php">&#128395; Pour créer une formation, c'est ici</a>
 <br>
 
 <?php
