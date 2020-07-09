@@ -45,8 +45,8 @@ if (!isset($_SESSION["email"])) {
             echo "<tr>";
             echo "<td>$idformation</td>";
             echo "<td>$intitule</td>";
-            echo "<td>$datedebut</td>";
-            echo "<td>$datefin</td>";
+            echo "<td>".date("d/m/Y", strtotime($datedebut))."</td>";
+            echo "<td>".date("d/m/Y", strtotime($datefin))."</td>";
             echo "<td>$lieu</td>";
             echo "<td>$prestataire</td>";
             echo "<td><a href=\"lireformation.php?id=" . $idformation . "\">&#128270; Voir la formation</a></td>";
