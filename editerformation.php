@@ -14,7 +14,7 @@ if (isset($_GET["id"])) {
 	<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"><?php
 																		echo "Bienvenue ".$_SESSION["prenom"];
 																		echo "<br>";
-																		echo "<a href=\"espaceemploye.php\">Revenir à l'espace employé</a>";
+																		echo "<a href=\"espaceemploye.php\">&#128281; Revenir à l'espace employé</a>";
 																		?>
 		<input type="submit" name="deconnecter" onclick="return confirm('Etes-vous sûr de vous déconnecter ?');" value="&#128272; Se déconnecter">
 	</form>
