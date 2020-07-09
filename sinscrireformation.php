@@ -51,12 +51,12 @@ foreach ($lesFormations as $laFormation) {
     echo "<tr>";
     echo "<td>$idformation</td>";
     echo "<td>$intitule</td>";
-    echo "<td>$datedebut</td>";
-    echo "<td>$datefin</td>";
+    echo "<td>".date("d/m/Y", strtotime($datedebut))."</td>";
+    echo "<td>".date("d/m/Y", strtotime($datefin))."</td>";
     echo "<td>$lieu</td>";
     echo "<td>$prestataire</td>";
-    echo "<td><a href=\"sinscrireformation.php?employe_id=" . $_SESSION["id"] . "&formation_id=" . $laFormation["id"] . "\">&#128395;&#65039; M'inscrire de cette formation</a></td>";
-    echo "<td><a href=\"lireformation.php?id=" . $laFormation["id"] . "\">&#128270; Lire la formation</a></td>";
+    echo "<td><a href=\"sinscrireformation.php?employe_id=" . $_SESSION["id"] . "&formation_id=" . $idformation .  "\">&#128395;&#65039; M'inscrire de cette formation</a></td>";
+    echo "<td><a href=\"lireformation.php?id=" . $idformation . "\">&#128270; Lire la formation</a></td>";
     echo "<td><a href=\"editerformation.php?id=" . $idformation . "\">&#128465;&#65039; Supprimer</a></td>";
     echo "<td><a href=\"editerformation.php?id=" . $idformation . "\">&#128395;&#65039; Editer</a></td>";
     echo "</tr>";
