@@ -14,7 +14,6 @@ require_once ("_entete.inc.php");
 		<input type="submit" name="connecter" value="&#128477; Se connecter">
 	</form>
 </fieldset>
-<a href="creationadherent.php">&#128395; Pour s'inscrire</a>
 </section>
 <?php
 require_once ("_piedpage.inc.php");

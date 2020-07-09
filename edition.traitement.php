@@ -1,13 +1,12 @@
 <?php
 require_once("_entete.inc.php");
 
-// Algorithme qui permet d'éditer les informations d'un employé
-if (isset($_POST["editer"])) {
-    if (isset($_POST["id"], $_POST["nom"], $_POST["prenom"], $_POST["email"], $_POST["motpasse"], $_POST["statut"])) {
-        editerUnAdherent($_POST["id"], $_POST["nom"], $_POST["prenom"], $_POST["email"], $_POST["motpasse"], $_POST["statut"]);
-        echo "<section class=\"reussie\">Votre espace est bien édité</section>";
-        header("location:espaceadherent.php");
+// Algorithme permettant d'éditer une formation
+if (isset($_POST["editerformation"])) {
+    if (isset($_POST["id"], $_POST["intitule"], $_POST["datedebut"], $_POST["datefin"], $_POST["lieu"], $_POST["prestataire"])) {
+        editerLaFormation($_POST["id"], $_POST["intitule"], $_POST["datedebut"], $_POST["datefin"], $_POST["lieu"], $_POST["prestataire"]);
+        echo "<section class=\"reussie\">Votre formation est bien édité</section>";
     } else {
-        echo "<section class=\"echoue\">Votre espace n'est pas édité</section>";
+        echo "<section class=\"echoue\">Votre formation n'est pas édité</section>";
     }
 }

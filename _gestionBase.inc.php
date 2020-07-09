@@ -21,11 +21,11 @@ function connexionBDD()
     return $pdo;
 }
 
-// La fonction inscriptionDunAdherent($nom, $prenom, $email, $motpasse, $statut) permet à un adherent de s'inscrire
-function inscriptionDunAdherent($nom, $prenom, $email, $motpasse, $statut)
+// La fonction inscriptionDunEmploye($nom, $prenom, $email, $motpasse, $statut) permet à un employé de s'inscrire
+/*function inscriptionDunEmploye($nom, $prenom, $email, $motpasse, $statut)
 {
     $pdo = connexionBDD();
-    $sql = "INSERT INTO adherent (nom, prenom, email, motpasse, statut) VALUES (:nom, :prenom, :email, :motpasse, :statut)";
+    $sql = "INSERT INTO employe (nom, prenom, email, motpasse, statut) VALUES (:nom, :prenom, :email, :motpasse, :statut)";
     $pdoStatement = $pdo->prepare($sql);
     $resultat = $pdoStatement->execute(array(
         ":nom" => $nom,
@@ -38,25 +38,11 @@ function inscriptionDunAdherent($nom, $prenom, $email, $motpasse, $statut)
     return $resultat;
 }
 
-// La fonction seConnecter($email, $motpasse) permet à l'adhérent de se connecter
-function seConnecter($email)
+// La fonction lireUnEmployeParlId($id) permet d'afficher dans un formulaire les informations d'un employé
+function lireUnEmployeParlId($id)
 {
     $pdo = connexionBDD();
-    $sql = "SELECT * FROM adherent WHERE email=:email";
-    $pdoStatement = $pdo->prepare($sql);
-    $pdoStatement->execute(array(
-        ":email" => $email
-    ));
-    $resultat = $pdoStatement->fetch(PDO::FETCH_ASSOC);
-    $pdoStatement->closeCursor();
-    return $resultat;
-}
-
-// La fonction lireUnAdherentParlId($id) permet d'afficher dans un formulaire les informations d'un adherent
-function lireUnAdherentParlId($id)
-{
-    $pdo = connexionBDD();
-    $sql = "SELECT * FROM adherent WHERE id=:id";
+    $sql = "SELECT * FROM employe WHERE id=:id";
     $pdoStatement = $pdo->prepare($sql);
     $pdoStatement->execute(array(
         ":id" => $id
@@ -66,11 +52,11 @@ function lireUnAdherentParlId($id)
     return $resultat;
 }
 
-// La fonction lireTouslesAdherents() permet de lire tus les adhérents
-function lireTouslesAdherents()
+// La fonction lireTouslesEmployes() permet de lire tous les employés
+function lireTouslesEmployes()
 {
     $pdo = connexionBDD();
-    $sql = "SELECT * FROM adherent";
+    $sql = "SELECT * FROM employe";
     $pdoStatement = $pdo->prepare($sql);
     $pdoStatement->execute();
     $resultat = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
@@ -78,11 +64,11 @@ function lireTouslesAdherents()
     return $resultat;
 }
 
-// La fonction supprimerUnAdherent($id) permet de supprimer un adherent avec le bouton supprimer du formulaire d'édition
-function supprimerUnAdherent($id)
+// La fonction supprimerUnEmploye($id) permet de supprimer un employé avec le bouton supprimer du formulaire d'édition
+function supprimerUnEmploye($id)
 {
     $pdo = connexionBDD();
-    $sql = "DELETE FROM adherent WHERE id=:id";
+    $sql = "DELETE FROM employe WHERE id=:id";
     $pdoStatement = $pdo->prepare($sql);
     $resultat = $pdoStatement->execute(array(
         ":id" => $id
@@ -91,11 +77,11 @@ function supprimerUnAdherent($id)
     return $resultat;
 }
 
-// La fonction editerUnAdherent($id, $nom, $prenom, $email, $motpasse, $statut) permet d'éditer les informations d'un utilisateur grâce à l'id
-function editerUnAdherent($id, $nom, $prenom, $email, $motpasse, $statut)
+// La fonction editerUnEmploye($id, $nom, $prenom, $email, $motpasse, $statut) permet d'éditer les informations d'un utilisateur grâce à l'id
+function editerUnEmploye($id, $nom, $prenom, $email, $motpasse, $statut)
 {
     $pdo = connexionBDD();
-    $sql = "UPDATE adherent SET nom=:nom, prenom=:prenom, email=:email, motpasse=:motpasse, statut=:statut WHERE id=:id";
+    $sql = "UPDATE employe SET nom=:nom, prenom=:prenom, email=:email, motpasse=:motpasse, statut=:statut WHERE id=:id";
     $pdoStatement = $pdo->prepare($sql);
     $resultat = $pdoStatement->execute(array(
         ":nom" => $nom,
@@ -107,9 +93,36 @@ function editerUnAdherent($id, $nom, $prenom, $email, $motpasse, $statut)
     ));
     $pdoStatement->closeCursor();
     return $resultat;
+}*/
+
+//La fonction seConnecter($email, $motpasse) permet à l'employé de se connecter
+function seConnecter($email)
+{
+    $pdo = connexionBDD();
+    $sql = "SELECT * FROM employe WHERE email=:email";
+    $pdoStatement = $pdo->prepare($sql);
+    $pdoStatement->execute(array(
+        ":email" => $email
+    ));
+    $resultat = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+    $pdoStatement->closeCursor();
+    return $resultat;
+}
+// La fonction lireUnEmployeParlId($id) permet d'afficher dans un formulaire les informations d'un employé
+function lireUnEmployeParlId($id)
+{
+    $pdo = connexionBDD();
+    $sql = "SELECT * FROM employe WHERE id=:id";
+    $pdoStatement = $pdo->prepare($sql);
+    $pdoStatement->execute(array(
+        ":id" => $id
+    ));
+    $resultat = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+    $pdoStatement->closeCursor();
+    return $resultat;
 }
 
-/* La fonction creerUneFormation() permet comme son nom ne l'indique pas de créer une formation
+//La fonction creerUneFormation() permet comme son nom ne l'indique pas de créer une formation
 function creerUneFormation($intitule, $datedebut, $datefin, $lieu, $prestataire)
 {
     $pdo = connexionBDD();
@@ -155,7 +168,7 @@ function editerLaFormation($id, $intitule, $datedebut, $datefin, $lieu, $prestat
     ));
     $pdoStatement->closeCursor();
     return $resultat;
-}*/
+}
 
 // La fonction lireTouteslesFormations() permet de sélectionner toutes les formations
 function lireTouteslesFormations()
@@ -183,42 +196,42 @@ function lireLaFormationParlId($id)
     return $resultat;
 }
 
-// La fonction sinscrireAMaFormation() permet - surprise - d'inscrire une formation pour l'adherent
-function sinscrireAMaFormation($adherent_id, $formation_id)
+// La fonction sinscrireAMaFormation() permet - surprise - d'inscrire une formation pour l'employé
+function sinscrireAMaFormation($employe_id, $formation_id)
 {
     $pdo = connexionBDD();
-    $sql = "INSERT INTO inscrire (Adherent_id, Formation_id) VALUES (:adherent_id, :formation_id)";
+    $sql = "INSERT INTO inscrire (Employe_id, Formation_id) VALUES (:employe_id, :formation_id)";
     $pdoStatement = $pdo->prepare($sql);
     $resultat = $pdoStatement->execute(array(
-        ":adherent_id" => $adherent_id,
+        ":employe_id" => $employe_id,
         ":formation_id" => $formation_id
     ));
     $pdoStatement->closeCursor();
     return $resultat;
 }
 
-// La fonction SeDesinscrireAMaFormation($adherent_id, $formation_id) permet de se désinscrire à une formation et voilà
-function SeDesinscrireAMaFormation($adherent_id, $formation_id)
+// La fonction SeDesinscrireAMaFormation($employe_id, $formation_id) permet de se désinscrire à une formation et voilà
+function SeDesinscrireAMaFormation($employe_id, $formation_id)
 {
     $pdo = connexionBDD();
-    $sql = "DELETE FROM inscrire WHERE Adherent_id=:adherent_id AND Formation_id=:formation_id";
+    $sql = "DELETE FROM inscrire WHERE Employe_id=:employe_id AND Formation_id=:formation_id";
     $pdoStatement = $pdo->prepare($sql);
     $resultat = $pdoStatement->execute(array(
-        ":adherent_id" => $adherent_id,
+        ":employe_id" => $employe_id,
         ":formation_id" => $formation_id
     ));
     $pdoStatement->closeCursor();
     return $resultat;
 }
 
-// La fonction lireMesFormations($adherent_id) permet de sélectionner toutes mes formations
-function lireMesFormations($adherent_id)
+// La fonction lireMesFormations($employe_id) permet de sélectionner toutes mes formations
+function lireMesFormations($employe_id)
 {
     $pdo = connexionBDD();
-    $sql = "SELECT * FROM formation LEFT JOIN inscrire ON formation.id = inscrire.Formation_id WHERE inscrire.Adherent_id =:adherent_id";
+    $sql = "SELECT * FROM formation LEFT JOIN inscrire ON formation.id = inscrire.Formation_id WHERE inscrire.Employe_id =:employe_id";
     $pdoStatement = $pdo->prepare($sql);
     $pdoStatement->execute(array(
-        ":adherent_id" => $adherent_id
+        ":employe_id" => $employe_id
     ));
     $resultat = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
     $pdoStatement->closeCursor();

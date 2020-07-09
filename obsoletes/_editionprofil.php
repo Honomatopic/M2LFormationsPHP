@@ -3,12 +3,12 @@
 require_once ("_entete.inc.php");
 if (isset($_GET["id"])) {
     $id = $_GET["id"];
-    $ladherent = lireUnAdherentParlId($_GET["id"]);
-    $nom = $ladherent["nom"];
-    $prenom = $ladherent["prenom"];
-    $email = $ladherent["email"];
-    $motpasse = $ladherent["motpasse"];
-    $statut = $ladherent["statut"];
+    $lemploye = lireUnEmployeParlId($_GET["id"]);
+    $nom = $lemploye["nom"];
+    $prenom = $lemploye["prenom"];
+    $email = $lemploye["email"];
+    $motpasse = $lemploye["motpasse"];
+    $statut = $lemploye["statut"];
 }
 ?>
 

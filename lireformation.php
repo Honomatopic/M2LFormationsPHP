@@ -4,7 +4,7 @@ require_once ("_entete.inc.php");
 ?>
 <header>
     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"><?php
-                                                                        echo "Bienvenue <a href=\"editionprofil?id=" . $_SESSION["id"] . "\">" . $_SESSION["prenom"] . "</a>";
+                                                                        echo "Bienvenue ".$_SESSION["prenom"];
                                                                         ?>
 
         <input type="submit" name="deconnecter" onclick="return confirm('Etes-vous sûr de vous déconnecter ?');" value="&#128272; Se déconnecter">

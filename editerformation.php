@@ -12,9 +12,9 @@ if (isset($_GET["id"])) {
 ?>
 <header>
 	<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"><?php
-																		echo "Bienvenue <a href=\"editionprofil?id=" . $_SESSION["id"] . "\">" . $_SESSION["prenom"] . "</a>";
+																		echo "Bienvenue ".$_SESSION["prenom"];
 																		echo "<br>";
-																		echo "<a href=\"espaceadherent.php\">Revenir à l'espace adhérent</a>";
+																		echo "<a href=\"espaceemploye.php\">Revenir à l'espace employé</a>";
 																		?>
 		<input type="submit" name="deconnecter" onclick="return confirm('Etes-vous sûr de vous déconnecter ?');" value="&#128272; Se déconnecter">
 	</form>
@@ -34,7 +34,6 @@ if (isset($_GET["id"])) {
 		</select> <br> <input type="submit" name="editerformation" value="&#128397;&#65039; Editer"> <br> <input type="submit" name="supprimerformation" onclick="return confirm('Etes-vous sûr de supprimer cette formation ?');" value="&#128465;&#65039; Supprimer">
 	</form>
 	<br>
-	<a href="sinscrireformation.php">&#128269; Voir les formations</a>
 </fieldset>
-
+<a href="sinscrireformation.php">&#128269; Voir les formations</a>
 <?php require_once("_piedpage.inc.php"); ?>

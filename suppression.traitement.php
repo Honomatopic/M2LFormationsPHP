@@ -1,11 +1,10 @@
 <?php
 require_once("_entete.inc.php");
 
-// Algorithme qui permet de supprimer un adhérent en fonction de son id
-if (isset($_POST["supprimer"])) {
+// Algorithme qui permet de supprimer une formation
+if (isset($_POST["supprimerformation"])) {
     if (isset($_POST["id"])) {
-        supprimerUnAdherent($_POST["id"]);
-        echo "<section class=\"reussie\">Votre espace est supprimée</section>";
-        header("location:index.php");
+        supprimerLaFormation($_POST["id"]);
+        echo "<section class=\"reussie\">Votre formation est supprimée</section>";
     }
 }

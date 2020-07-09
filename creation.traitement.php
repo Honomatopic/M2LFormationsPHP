@@ -1,13 +1,12 @@
 <?php
 require_once("_entete.inc.php");
 
-// Algorithme qui permet aux employés de s'inscrire
-if (isset($_POST["inscrire"])) {
-    if (isset($_POST["nom"], $_POST["prenom"], $_POST["email"], $_POST["motpasse"], $_POST["statut"])) {
-        inscriptionDunAdherent($_POST["nom"], $_POST["prenom"], $_POST["email"], $_POST["motpasse"], $_POST["statut"]);
-        echo "<section class=\"reussie\">Votre inscription a réussie</section>";
-        header("location:index.php");
+/// Algorithme qui permet de créer une formation
+if (isset($_POST["creer"])) {
+    if (isset($_POST["intitule"], $_POST["datedebut"], $_POST["datefin"], $_POST["lieu"], $_POST["prestataire"])) {
+        creerUneFormation($_POST["intitule"], $_POST["datedebut"], $_POST["datefin"], $_POST["lieu"], $_POST["prestataire"]);
+        echo "<section class=\"reussie\">La formation est bien créée</section>";
     } else {
-        echo "<section class=\"echoue\">Votre inscription a échoué</section>";
+        echo "<section class=\"echoue\">La formation n'est pas créée</section>";
     }
 }

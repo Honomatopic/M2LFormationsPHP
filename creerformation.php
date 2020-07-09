@@ -1,9 +1,10 @@
 <?php require_once("_entete.inc.php"); ?>
 <header>
-	<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"><?php
-																		echo "Bienvenue <a href=\editionprofil?id=" . $_SESSION["id"] . "\">" . $_SESSION["prenom"] . "</a>";
+<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"><?php
+                                                                        echo "Bienvenue " . $_SESSION["prenom"];
+                                                        
 																		echo "<br>";
-																		echo "<a href=\"espaceadherent.php\">&#128281; Revenir à l'espace adhérent</a>";
+																		echo "<a href=\"espaceemploye.php\">&#128281; Revenir à l'espace employé</a>";
 																		echo "<br>";
 																		echo "<a href=\"sinscrireformation.php\">&#128281; Revenir aux formations disponibles</a>";
 																		?>
@@ -16,7 +17,7 @@
 
 	<form action="" method="post">
 		<input type="text" name="intitule" placeholder="L'intitulé"> <br> Du
-		<input type="date" name="datedebut" value=<?php echo date("dd/MM/Y") ?> min="2000-01-01" max="2021-12-31"> au <input type="date" name="datefin" value=<?php echo date("dd/MM/Y") ?> min="2000-01-01" max="2021-12-31"> <br>
+		<input type="date" name="datedebut" value=<?php echo date("dd/MM/Y") ?> min="01/01/2000" max="31/12/2021"> au <input type="date" name="datefin" value=<?php echo date("dd/MM/Y") ?> min="01/01/2000" max="31/12/2021"> <br>
 		<input type="text" name="lieu" placeholder="Le lieu"> <br>
 		<select name="prestataire" placeholder="Le prestataire">
 			<option value="AFPA">AFPA</option>
