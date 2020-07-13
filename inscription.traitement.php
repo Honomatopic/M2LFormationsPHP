@@ -1,5 +1,5 @@
 <?php
-require_once("_entete.inc.php");
+require_once ("_entete.inc.php");
 
 // Algorithme permettant de s'inscrire à une formation
 if (isset($_GET["employe_id"], $_GET["formation_id"])) {

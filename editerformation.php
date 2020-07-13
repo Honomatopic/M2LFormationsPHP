@@ -1,5 +1,5 @@
 <?php
-require_once("_entete.inc.php");
+require_once ("_entete.inc.php");
 if (isset($_GET["id"])) {
 	$id = $_GET["id"];
 	$laformation = lireLaFormationParlId($_GET["id"]);
@@ -37,4 +37,4 @@ if (isset($_GET["id"])) {
 <a href="sinscrireformation.php">&#128269; Voir les formations</a>
 <br>
 <a href="creerformation.php">&#128395; Pour créer une formation, c'est ici</a>
-<?php require_once("_piedpage.inc.php"); ?>
+<?php require_once ("_piedpage.inc.php"); ?>

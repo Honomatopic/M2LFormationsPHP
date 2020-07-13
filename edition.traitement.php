@@ -1,5 +1,5 @@
 <?php
-require_once("_entete.inc.php");
+require_once ("_entete.inc.php");
 
 // Algorithme permettant d'éditer une formation
 if (isset($_POST["editerformation"])) {

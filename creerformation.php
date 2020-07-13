@@ -1,4 +1,4 @@
-<?php require_once("_entete.inc.php"); ?>
+<?php require_once ("_entete.inc.php"); ?>
 <header>
 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"><?php
                                                                         echo "Bienvenue " . $_SESSION["prenom"];
@@ -29,4 +29,4 @@
 	</form>
 
 </fieldset>
-<?php require_once("_piedpage.inc.php"); ?>
+<?php require_once ("_piedpage.inc.php"); ?>

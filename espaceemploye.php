@@ -1,5 +1,5 @@
 <?php
-require_once("_entete.inc.php");
+require_once ("_entete.inc.php");
 if (!isset($_SESSION["email"])) {
     header("location:index.php");
 }
@@ -64,8 +64,5 @@ if (!isset($_SESSION["email"])) {
 <br>
 <a href="sinscrireformation.php">&#128269; Voir toutes les formations</a>
 <?php
-require_once("_piedpage.inc.php");
-?>
-<?php
-require_once("_piedpage.inc.php");
+require_once ("_piedpage.inc.php");
 ?>
