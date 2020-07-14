@@ -22,7 +22,7 @@ $dompdf->loadHtml($html);
 $options->set('isPhpEnabled', true);
 $dompdf->setPaper('A4', 'landscape');
 $dompdf->render();
-$dompdf->stream("pdf/".$laformation["intitule"].".pdf", array("Attachment" => true));
+$dompdf->stream("pdf/".$laformation["intitule"].".pdf", array("Attachment" => false));
 file_put_contents("pdf/".$laformation["intitule"].".pdf", $dompdf->output());
 
 ?>
