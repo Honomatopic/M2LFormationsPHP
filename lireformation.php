@@ -14,8 +14,8 @@ require_once ("_entete.inc.php");
 $laformation = lireLaFormationParlId($_GET["id"]);
 echo "<p>".$laformation["id"]."</p>";
 echo "<p>".$laformation["intitule"]."</p>";
-echo "<p>".$laformation["datedebut"]."</p>";
-echo "<p>".$laformation["datefin"]."</p>";
+echo "<p>".date("d/m/Y", strtotime($laformation["datedebut"]))."</p>";
+echo "<p>".date("d/m/Y", strtotime($laformation["datefin"]))."</p>";
 echo "<p>".$laformation["lieu"]."</p>";
 echo "<p>".$laformation["prestataire"]."</p>";
 ;?>
