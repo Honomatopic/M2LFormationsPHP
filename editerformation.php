@@ -1,5 +1,5 @@
 <?php
-require_once ("_entete.inc.php");
+require_once("_entete.inc.php");
 if (isset($_GET["id"])) {
 	$id = $_GET["id"];
 	$laformation = lireLaFormationParlId($_GET["id"]);
@@ -12,7 +12,7 @@ if (isset($_GET["id"])) {
 ?>
 <header>
 	<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"><?php
-																		echo "Bienvenue ".$_SESSION["prenom"];
+																		echo "Bienvenue " . $_SESSION["prenom"];
 																		echo "<br>";
 																		echo "<a href=\"espaceemploye.php\">&#128281; Revenir à l'espace employé</a>";
 																		?>
@@ -25,7 +25,8 @@ if (isset($_GET["id"])) {
 
 	<form action="" method="post">
 		<input type="hidden" name="id" value=<?php echo $id; ?>> <input type="text" name="intitule" value="<?php echo $intitule; ?>"> <br>
-		Du <input type="date" name="datedebut" min="2000-01-01" max="2021-12-31" value=<?php echo $datedebut; ?>> au <input type="date" name="datefin" min="2000-01-01" max="2021-12-31" value=<?php echo $datefin; ?>> <br> <input type="text" name="lieu" value="<?php echo $lieu; ?>"> <br> <select name="prestataire" value="<?php echo $prestataire; ?>">
+		Du <input type="date" name="datedebut" min="2000-01-01" max="2021-12-31" value=<?php echo $datedebut; ?>> au <input type="date" name="datefin" min="2000-01-01" max="2021-12-31" value=<?php echo $datefin; ?>> <br> <input type="text" name="lieu" value="<?php echo $lieu; ?>"> <br> <select name="prestataire" value="">
+			<option><?php echo $prestataire; ?></option>
 			<option value="AFPA">AFPA</option>
 			<option value="inconnu">Inconnu</option>
 			<option value="CNAM">CNAM</option>
@@ -37,4 +38,4 @@ if (isset($_GET["id"])) {
 <a href="sinscrireformation.php">&#128269; Voir les formations</a>
 <br>
 <a href="creerformation.php">&#128395; Pour créer une formation, c'est ici</a>
-<?php require_once ("_piedpage.inc.php"); ?>
+<?php require_once("_piedpage.inc.php"); ?>
