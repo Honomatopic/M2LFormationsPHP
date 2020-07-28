@@ -5,16 +5,8 @@ if (!isset($_SESSION["email"])) {
 }
 
 ?>
-<header>
-    <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"><?php
-                                                                        echo "Bienvenue " . $_SESSION["prenom"];
-                                                                        ?>
 
-        <input type="submit" name="deconnecter" onclick="return confirm('Etes-vous sûr de vous déconnecter ?');" value="&#128272; Se déconnecter">
-    </form>
-</header>
-
-<h2>Bienvenue. Voici l'ensemble des formations où vous êtes inscris</h2>
+<h2>Bienvenue. Voici l'ensemble des sessions de formations où vous êtes inscris</h2>
 <table>
     <thead>
         <tr>
@@ -22,47 +14,44 @@ if (!isset($_SESSION["email"])) {
             <td>Nom de la formation</td>
             <td>Date de début</td>
             <td>Date de fin</td>
-            <td>Lieu</td>
+            <td>Salle</td>
             <td>Prestataire</td>
+            <td>Intervenant</td>
             <td>Voir</td>
             <td>Se désinscrire</td>
-            <td>Supprimer</td>
-            <td>Editer</td>
         </tr>
     </thead>
     <tbody>
         <?php
-        $lesFormations = lireMesFormations($_SESSION["id"]);
+        $lesSessions = lireMesSessions($_SESSION["id"]);
         echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
-        foreach ($lesFormations as $laFormation) {
+        foreach ($lesSessions as $laSession) {
 
-            $idformation = $laFormation["id"];
-            $intitule = $laFormation["intitule"];
-            $datedebut = $laFormation["datedebut"];
-            $datefin = $laFormation["datefin"];
-            $lieu = $laFormation["lieu"];
-            $prestataire = $laFormation["prestataire"];
+            $idsession = $laSession["id"];
+            $intitule = $laSession["intitule"];
+            $datedebut = $laSession["datedebut"];
+            $datefin = $laSession["datefin"];
+            $salle = $laSession["lieu"];
+            $intervenant = $laSession["intervenant"];
+            $prestataire = $laSession["prestataire"];
             echo "<tr>";
             echo "<td>$idformation</td>";
             echo "<td>$intitule</td>";
             echo "<td>".date("d/m/Y", strtotime($datedebut))."</td>";
             echo "<td>".date("d/m/Y", strtotime($datefin))."</td>";
-            echo "<td>$lieu</td>";
+            echo "<td>$salle</td>";
+            echo "<td>$intervenant</td>";
             echo "<td>$prestataire</td>";
-            echo "<td><a href=\"lireformation.php?id=" . $idformation . "\">&#128270; Voir la formation</a></td>";
-            echo "<td><a href=\"espaceemploye.php?eemploye_id=" . $_SESSION["id"] . "&fformation_id=" . $idformation . "\">&#128465;&#65039; Me désinscrire de cette formation</a></td>";
-            echo "<td><a href=\"editerformation.php?id=" . $idformation . "\">&#128465;&#65039; Supprimer</a></td>";
-            echo "<td><a href=\"editerformation.php?id=" . $idformation . "\">&#128395;&#65039; Editer</a></td>";
+            echo "<td><a href=\"lireformation.php?id=" . $idsession . "\">&#128270; Voir la formation</a></td>";
+            echo "<td><a href=\"espaceemploye.php?eemploye_id=" . $_SESSION["id"] . "&fformation_id=" . $idsession . "\">&#128465;&#65039; Me désinscrire de cette formation</a></td>";
             echo "</tr>";
         }
         echo "</form>";
         ?>
     </tbody>
-</table>
+    </table>
 <br>
-<a href="creerformation.php">&#128395; Pour créer une formation, c'est ici</a>
-<br>
-<a href="sinscrireformation.php">&#128269; Voir toutes les formations</a>
+<a href="inscriresession.php">&#128269; Voir toutes les sessions de formations</a>
 <?php
 require_once ("_piedpage.inc.php");
 ?>

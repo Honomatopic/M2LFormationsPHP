@@ -6,15 +6,16 @@ use Dompdf\Options;
 $dompdf = new Dompdf();
 $options = new Options();
 
-$laformation = lireLaFormationParlId($_GET["id"]);
+$laSession = lireLaFormationParlId($_GET["id"]);
 $html = "<link type=\"text/css\" rel=\"stylesheet\" href=\"css/style.css\">";
 $html .= "<img alt=\"Logo\" src=\"images/m2l.png\">";
-$html .= "<p>".$laformation["id"]."</p>";
-$html .= "<p>".$laformation["intitule"]."</p>";
-$html .= "<p>".date("d/m/Y", strtotime($laformation["datedebut"]))."</p>";
-$html .= "<p>".date("d/m/Y", strtotime($laformation["datefin"]))."</p>";
-$html .= "<p>".$laformation["lieu"]."</p>";
-$html .= "<p>".$laformation["prestataire"]."</p>";
+$html .= "<p>".$laSession["id"]."</p>";
+$html .= "<p>".$laSession["intitule"]."</p>";
+$html .= "<p>".date("d/m/Y", strtotime($laSession["datedebut"]))."</p>";
+$html .= "<p>".date("d/m/Y", strtotime($laSession["datefin"]))."</p>";
+$html .= "<p>".$laSession["salle"]."</p>";
+$html .= "<p>".$laSession["prestataire"]."</p>";
+$html .= "<p>".$laSession["intervenant"]."</p>";
 $html .= "<hr>";
 $html .= "&copy ".date('Y')." Honoré Rasamoelina";
 
