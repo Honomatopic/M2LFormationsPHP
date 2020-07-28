@@ -8,7 +8,7 @@ if(isset($_POST)) {
 <fieldset>
 	<legend>Pour créer une durée</legend>
 
-	<form action="" method="post">
+	<form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
 		 <input type="date" name="datedebut" placeholder="La date de début"> <br>
 		 <input type="date" name="datefin" placeholder="La date de fin"> <br>
 		<input type="submit" name="creerduree" value="&#128395; Créer">
