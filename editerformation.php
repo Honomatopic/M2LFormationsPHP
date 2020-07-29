@@ -12,7 +12,7 @@ if (isset($_GET["id"])) {
 
 	<form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
 		<input type="hidden" name="id" value=<?php echo $id; ?>> <input type="text" name="intitule" value="<?php echo $intitule; ?>"> <br>
-		<input type="submit" name="editerformation" value="&#128397;&#65039; Editer"> &nbsp; <input type="submit" name="supprimer" onclick="return confirm('Etes-vous sûr de supprimer cette formation ?');" value="&#128465;&#65039; Supprimer">
+		<input type="submit" name="editerformation" value="&#128397;&#65039; Editer"> &nbsp; <input type="submit" name="supprimerformation" onclick="return confirm('Etes-vous sûr de supprimer cette formation ?');" value="&#128465;&#65039; Supprimer">
 	</form>
 </fieldset>
 <a href="liretouteslesformations.php">&#128269; Voir les formations</a>

@@ -3,9 +3,9 @@
 <fieldset>
 	<legend>Pour créer un prestataire</legend>
 
-	<form action="" method="post">
+	<form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
 		 <input type="text" name="nom" placeholder="Le nom du prestataire"> <br>
-		<input type="submit" name="creer" value="&#128395; Créer">
+		<input type="submit" name="creerprestataire" value="&#128395; Créer">
 	</form>
 
 </fieldset>

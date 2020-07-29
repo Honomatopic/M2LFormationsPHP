@@ -1,7 +1,5 @@
 <?php require_once ("_entete.inc.php"); 
-if(isset($_POST)) {
-	var_dump($_POST);
-}
+
 
 ?>
 <h2>Pour créer une durée</h2>

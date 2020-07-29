@@ -382,29 +382,77 @@ function lirelaSalleParlId($id)
     return $resultat;
 }
 
-// La fonction sinscrireAUneSession() permet - surprise - de s'inscrire à une session de formation pour l'employé
-function sinscrireAUneSession($employe_id, $session_id)
+//La fonction creerUneSession() permet comme son nom ne l'indique pas de créer une session de formation
+function creerUneSession($formation, $duree, $salle, $intervenant, $prestataire)
 {
     $pdo = connexionBDD();
-    $sql = "INSERT INTO inscrire (session_id, employe_id) VALUES (:session_id, :employe_id)";
+    $sql = "INSERT INTO session (formation_id, duree_id, salle_id, intervenant_id, prestataire_id) VALUES (:formation, :duree, :salle, :intervenant, :prestataire)";
     $pdoStatement = $pdo->prepare($sql);
     $resultat = $pdoStatement->execute(array(
-        ":session_id" => $session_id,
-        ":employe_id" => $employe_id
+        ":formation" => $formation,
+        ":duree" => $duree,
+        ":salle" => $salle,
+        ":intervenant" => $intervenant,
+        ":prestataire" => $prestataire
     ));
     $pdoStatement->closeCursor();
     return $resultat;
 }
 
-// La fonction SeDesinscrireAMaSession($session_id, $employe_id) permet de se désinscrire à une session de formation et voilà
-function SeDesinscrireAMaSession($session_id, $employe_id)
+// La fonction supprimerlaSession() permet de supprimer quoi ? Une session de formation par l'id pardi
+function supprimerlaSession($id)
 {
     $pdo = connexionBDD();
-    $sql = "DELETE FROM inscrire WHERE session_id=:session_id AND employe_id=:employe_id";
+    $sql = "DELETE FROM session WHERE id=:id";
     $pdoStatement = $pdo->prepare($sql);
     $resultat = $pdoStatement->execute(array(
-        ":session_id" => $session_id,
-        ":employe_id" => $employe_id
+        ":id" => $id
+    ));
+    $pdoStatement->closeCursor();
+    return $resultat;
+}
+
+// La fonction editerleSession() permet d'éditer une session de formation, une seule
+function editerlaSession($id, $formation, $duree, $salle, $intervenant, $prestataire)
+{
+    $pdo = connexionBDD();
+    $sql = "UPDATE session SET formation_id=:formation, duree_id=:duree, salle_id=:salle, intervenant_id=:intervenant, prestataire_id=:prestataire WHERE id=:id";
+    $pdoStatement = $pdo->prepare($sql);
+    $resultat = $pdoStatement->execute(array(
+        ":formation" => $formation,
+        ":duree" => $duree,
+        ":salle" => $salle,
+        ":intervenant" => $intervenant,
+        ":prestataire" => $prestataire,
+        ":id" => $id
+    ));
+    $pdoStatement->closeCursor();
+    return $resultat;
+}
+
+// La fonction sinscrireAUneSession() permet - surprise - de s'inscrire à une session de formation pour l'employé
+function sinscrireAUneSession($employe_id, $session_id)
+{
+    $pdo = connexionBDD();
+    $sql = "INSERT INTO inscrire (employe_id, session_id) VALUES (:employe_id, :session_id)";
+    $pdoStatement = $pdo->prepare($sql);
+    $resultat = $pdoStatement->execute(array(
+        ":employe_id" => $employe_id,
+        ":session_id" => $session_id
+    ));
+    $pdoStatement->closeCursor();
+    return $resultat;
+}
+
+// La fonction SeDesinscrireAMaSession($employe_id, $session_id) permet de se désinscrire à une session de formation et voilà
+function SeDesinscrireAMaSession($employe_id, $session_id)
+{
+    $pdo = connexionBDD();
+    $sql = "DELETE FROM inscrire WHERE employe_id=:employe_id AND session_id=:session_id";
+    $pdoStatement = $pdo->prepare($sql);
+    $resultat = $pdoStatement->execute(array(
+        ":employe_id" => $employe_id,
+        ":session_id" => $session_id
     ));
     $pdoStatement->closeCursor();
     return $resultat;
@@ -414,7 +462,12 @@ function SeDesinscrireAMaSession($session_id, $employe_id)
 function lireMesSessions($employe_id)
 {
     $pdo = connexionBDD();
-    $sql = "SELECT session.id, formation.intitule, duree.datedebut, duree.datefin, salle.nom, intervenant.nom, intervenant.prenom, prestataire.nom 
+    $sql = "SELECT session.id, formation.intitule AS intitule_formation, 
+    duree.datedebut, duree.datefin, 
+    salle.nom AS nom_salle, 
+    intervenant.nom AS nom_intervenant, 
+    intervenant.prenom AS prenom_intervenant, 
+    prestataire.nom AS nom_prestataire
     FROM session 
     JOIN formation ON session.formation_id = formation.id
     JOIN duree ON session.duree_id = duree.id
@@ -437,7 +490,12 @@ function lireMesSessions($employe_id)
 function lireTouteslesSessions()
 {
     $pdo = connexionBDD();
-    $sql = "SELECT session.id, formation.intitule, duree.datedebut, duree.datefin, salle.nom, intervenant.nom, intervenant.prenom, prestataire.nom
+    $sql = "SELECT session.id, formation.intitule AS intitule_formation, 
+    duree.datedebut, duree.datefin, 
+    salle.nom AS nom_salle, 
+    intervenant.nom AS nom_intervenant, 
+    intervenant.prenom AS prenom_intervenant, 
+    prestataire.nom AS nom_prestataire
     FROM session  
     JOIN formation ON session.formation_id = formation.id
     JOIN duree ON session.duree_id = duree.id 
@@ -447,6 +505,47 @@ function lireTouteslesSessions()
     $pdoStatement = $pdo->prepare($sql);
     $pdoStatement->execute();
     $resultat = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+    $pdoStatement->closeCursor();
+    return $resultat;
+}
+
+// La fonction lirelaSessionAvecInformationParlId() permet de selectionner une session de formation par, devinez quoi ?, l'id mais en affichant les informations supplémentaires comme par exemple le nom de la formation, de la salle, de l'intervenant, de la durée et du prestataire
+function lirelaSessionAvecInformationParlId($id)
+{
+    $pdo = connexionBDD();
+    $sql = "SELECT session.id, formation.intitule AS intitule_formation, 
+    duree.datedebut, duree.datefin, 
+    salle.nom AS nom_salle, 
+    intervenant.nom AS nom_intervenant, 
+    intervenant.prenom AS prenom_intervenant, 
+    prestataire.nom AS nom_prestataire
+    FROM session  
+    JOIN formation ON session.formation_id = formation.id
+    JOIN duree ON session.duree_id = duree.id 
+    JOIN salle ON session.salle_id = salle.id 
+    JOIN intervenant ON session.intervenant_id = intervenant.id 
+    JOIN prestataire ON session.prestataire_id = prestataire.id 
+    WHERE session.id=:id";
+    $pdoStatement = $pdo->prepare($sql);
+    $pdoStatement->execute(array(
+        ":id" => $id
+    ));
+    $resultat = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+    $pdoStatement->closeCursor();
+    return $resultat;
+}
+
+// La fonction lirelaSessionParlId() permet de selectionner une session de formation par, devinez quoi ?, l'id
+function lirelaSessionParlId($id)
+{
+    $pdo = connexionBDD();
+    $sql = "SELECT * FROM session  
+    WHERE session.id=:id";
+    $pdoStatement = $pdo->prepare($sql);
+    $pdoStatement->execute(array(
+        ":id" => $id
+    ));
+    $resultat = $pdoStatement->fetch(PDO::FETCH_ASSOC);
     $pdoStatement->closeCursor();
     return $resultat;
 }
