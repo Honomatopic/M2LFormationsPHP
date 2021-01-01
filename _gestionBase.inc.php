@@ -46,10 +46,10 @@ function creerUnEmploye($nom, $prenom, $email, $motpasse, $statut)
     } else {
         echo "Une erreur est survenue";
     }
-    return $$creer_employe;
+    return $creer_employe;
 }
 
-// La fonction supprimerlEmploye($id) permet de supprimer un employé par quoi ? Son id pardis
+// La fonction supprimerlEmploye($id) permet de supprimer un employé par quoi ? Son id pardi
 function supprimerlEmploye($id)
 {
     $cnx = gestionnaireDeConnexion();
