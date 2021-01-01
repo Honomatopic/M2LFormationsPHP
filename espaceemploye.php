@@ -1,5 +1,5 @@
 <?php
-require_once("_entete.inc.php");
+include_once("_entete.inc.php");
 if (!isset($_SESSION["email"])) {
     header("location:index.php");
 }
@@ -51,5 +51,5 @@ if (!isset($_SESSION["email"])) {
     </tbody>
 </table>
 <?php
-require_once("_piedpage.inc.php");
+include_once("_piedpage.inc.php");
 ?>

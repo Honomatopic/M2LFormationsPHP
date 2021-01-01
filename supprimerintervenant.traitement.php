@@ -1,5 +1,5 @@
 <?php
-require_once ("_entete.inc.php");
+include_once ("_entete.inc.php");
 
 // Algorithme qui permet de supprimer un intervenant
 if (isset($_POST["supprimerintervenant"])) {

@@ -1,5 +1,5 @@
 <?php
-require_once ("_entete.inc.php");
+include_once ("_entete.inc.php");
 
 /// Algorithme qui permet de créer une formation
 if (isset($_POST["creerformation"])) {

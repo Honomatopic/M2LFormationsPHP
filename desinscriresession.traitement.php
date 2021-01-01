@@ -1,5 +1,5 @@
 <?php
-require_once ("_entete.inc.php");
+include_once ("_entete.inc.php");
 
 // Algorithme qui permet de se désinscrire d'une session
 if (isset($_GET["eemploye_id"], $_GET["ssession_id"])) {

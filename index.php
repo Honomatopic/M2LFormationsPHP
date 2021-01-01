@@ -1,6 +1,6 @@
 <?php
 // Page d'accueil de l'application M2L
-require_once ("_entete.inc.php");
+include_once ("_entete.inc.php");
 ?>
 
 
@@ -16,5 +16,5 @@ require_once ("_entete.inc.php");
 </fieldset>
 </section>
 <?php
-require_once ("_piedpage.inc.php");
+include_once ("_piedpage.inc.php");
 ?>

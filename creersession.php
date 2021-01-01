@@ -1,4 +1,4 @@
-<?php require_once ("_entete.inc.php"); ?>
+<?php include_once ("_entete.inc.php"); ?>
 <h2>Pour créer une session de formation</h2>
 <fieldset>
 	<legend>Pour créer une session de formation</legend>
@@ -51,4 +51,4 @@
 <br>
 <a href="liretouteslessessions.php">&#128269; Voir toutes les sessions
 </a>
-<?php require_once ("_piedpage.inc.php"); ?>
+<?php include_once ("_piedpage.inc.php"); ?>

@@ -1,5 +1,5 @@
 <?php
-require_once ("_entete.inc.php");
+include_once ("_entete.inc.php");
 if (isset($_GET["id"])) {
 	$id = $_GET["id"];
 	$laSalle = lirelaSalleParlId($id);
@@ -16,4 +16,4 @@ if (isset($_GET["id"])) {
 	</form>
 </fieldset>
 <a href="liretouteslessalles.php">&#128269; Voir les salles</a>
-<?php require_once("_piedpage.inc.php"); ?>
+<?php include_once("_piedpage.inc.php"); ?>

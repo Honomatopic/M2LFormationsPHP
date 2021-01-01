@@ -1,5 +1,5 @@
 <?php
-require_once ("_entete.inc.php");
+include_once ("_entete.inc.php");
 if (!isset($_SESSION["email"])) {
     header("location:index.php");
 }
@@ -42,5 +42,5 @@ if (!isset($_SESSION["email"])) {
 <br>
 <a href="creerintervenant.php">&#128395; Pour créer un intervenant, c'est ici</a>
 <?php
-require_once ("_piedpage.inc.php");
+include_once ("_piedpage.inc.php");
 ?>

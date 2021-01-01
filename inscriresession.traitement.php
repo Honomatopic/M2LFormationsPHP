@@ -1,5 +1,5 @@
 <?php
-require_once ("_entete.inc.php");
+include_once ("_entete.inc.php");
 
 // Algorithme permettant de s'inscrire à une session de formation
 if (isset($_GET["employe_id"], $_GET["session_id"])) {

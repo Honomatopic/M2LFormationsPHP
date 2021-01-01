@@ -1,5 +1,5 @@
 <?php
-require_once ("_entete.inc.php");
+include_once ("_entete.inc.php");
 
 // Algorithme permettant d'éditer une salle
 if (isset($_POST["editersalle"])) {

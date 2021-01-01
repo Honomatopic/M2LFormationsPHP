@@ -1,4 +1,4 @@
-<?php require_once ("_entete.inc.php"); ?>
+<?php include_once ("_entete.inc.php"); ?>
 <h2>Pour créer un prestataire</h2>
 <fieldset>
 	<legend>Pour créer un prestataire</legend>
@@ -12,4 +12,4 @@
 <br>
 <a href="liretouslesprestataires.php">&#128269; Voir tous les prestataires
 </a>
-<?php require_once ("_piedpage.inc.php"); ?>
+<?php include_once ("_piedpage.inc.php"); ?>

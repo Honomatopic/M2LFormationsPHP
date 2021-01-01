@@ -1,5 +1,5 @@
 <?php
-require_once ("_entete.inc.php");
+include_once ("_entete.inc.php");
 ?>
 
 <?php 
@@ -16,6 +16,6 @@ echo "<td></td>";
 <a href="lirelasession.php?employe_id=<?php echo $_SESSION["id"] ;?>&session_id=<?php echo $laSession["id"];?>"><button>&#128395;&#65039; M'inscrire de cette formation</button></a>
 <a href="generersessionenpdf.php?id=<?php echo $laSession["id"];?>"><button>&#128195; Génerer le PDF</button></a>
 <?php
-require_once ("_piedpage.inc.php");
+include_once ("_piedpage.inc.php");
 
 ?>
