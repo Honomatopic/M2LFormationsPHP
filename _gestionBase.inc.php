@@ -16,6 +16,7 @@ function gestionnaireDeConnexion()
         echo "Echec de la connexion : " . mysqli_connect_error();
         exit();
     }
+	mysqli_set_charset($cnx, 'utf8');
     return $cnx;
 }
 
