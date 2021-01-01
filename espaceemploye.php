@@ -1,5 +1,5 @@
 <?php
-require_once ("_entete.inc.php");
+require_once("_entete.inc.php");
 if (!isset($_SESSION["email"])) {
     header("location:index.php");
 }
@@ -22,33 +22,34 @@ if (!isset($_SESSION["email"])) {
     </thead>
     <tbody>
         <?php
-        $lesSessions = lireMesSessions($_SESSION["id"]);
+        $mesSessions = lireMesSessions($_SESSION["id"]);
         echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
-        foreach ($lesSessions as $laSession) {
-
-            $idsession = $laSession["id"];
-            $intitule = $laSession["intitule_formation"];
-            $datedebut = $laSession["datedebut"];
-            $datefin = $laSession["datefin"];
-            $salle = $laSession["nom_salle"];
-            $nomintervenant = $laSession["nom_intervenant"];
-            $prenomintervenant = $laSession["prenom_intervenant"];
-            $prestataire = $laSession["nom_prestataire"];
-            echo "<tr>";
-            echo "<td>$idsession</td>";
-            echo "<td>$intitule</td>";
-            echo "<td>".date("d/m/Y", strtotime($datedebut))."</td>";
-            echo "<td>".date("d/m/Y", strtotime($datefin))."</td>";
-            echo "<td>$salle</td>";
-            echo "<td>$prenomintervenant $nomintervenant</td>";
-            echo "<td>$prestataire</td>";
-            echo "<td><a href=\"liremasession.php?id=" . $idsession . "\">&#128270; Voir le détail</a></td>";
-            echo "</tr>";
-        }
+        
+            foreach ($mesSessions as $maSession) {
+                $idsession = $maSession["id"];
+                $intitule = $maSession["intitule_formation"];
+                $datedebut = $maSession["datedebut"];
+                $datefin = $maSession["datefin"];
+                $salle = $maSession["nom_salle"];
+                $nomintervenant = $maSession["nom_intervenant"];
+                $prenomintervenant = $maSession["prenom_intervenant"];
+                $prestataire = $maSession["nom_prestataire"];
+                echo "<tr>";
+                echo "<td>$idsession</td>";
+                echo "<td>$intitule</td>";
+                echo "<td>" . date("d/m/Y", strtotime($datedebut)) . "</td>";
+                echo "<td>" . date("d/m/Y", strtotime($datefin)) . "</td>";
+                echo "<td>$salle</td>";
+                echo "<td>$prenomintervenant $nomintervenant</td>";
+                echo "<td>$prestataire</td>";
+                echo "<td><a href=\"liremasession.php?id=" . $idsession . "\">&#128270; Voir le détail</a></td>";
+                echo "</tr>";
+            }
+        
         echo "</form>";
         ?>
     </tbody>
-    </table>
+</table>
 <?php
-require_once ("_piedpage.inc.php");
+require_once("_piedpage.inc.php");
 ?>
