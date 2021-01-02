@@ -20,7 +20,6 @@ function gestionnaireDeConnexion()
     return $cnx;
 }
 
-gestionnaireDeConnexion();
 
 // La fonction seConnecter($email) permet à l'employé de se connecter
 function seConnecter($email)
