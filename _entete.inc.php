@@ -5,6 +5,9 @@ $_SESSION["statut"] = (isset($_SESSION["statut"])) ? $_SESSION["statut"] :'';
 include_once ("_gestionBase.inc.php");
 include_once ("connecteremploye.traitement.php");
 include_once ("deconnecteremploye.traitement.php");
+include_once ("creeremploye.traitement.php");
+include_once ("supprimeremploye.traitement.php");
+include_once ("editeremploye.traitement.php");
 include_once ("creerformation.traitement.php");
 include_once ("supprimerformation.traitement.php");
 include_once ("editerformation.traitement.php");
@@ -45,6 +48,7 @@ include_once ("desinscriresession.traitement.php");
 			<?php if($_SESSION["statut"]==1) : ?>
 				<li class="deroulant">Gérer</li>
 				<ul class="sous">
+					<li><a href="liretouslesemployes.php">&#128395; Les employés</a></li>
 					<li><a href="liretouteslesformations.php">&#128395; Les formations</a></li>
 					<li><a href="liretouteslesdurees.php">&#128395; Les durées</a></li>
 					<li><a href="liretouslesintervenants.php">&#128395; Les intervenants</a></li>

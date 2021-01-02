@@ -22,7 +22,6 @@ if (!isset($_SESSION["email"])) {
         $lesSalles = lireTouteslesSalles();
         echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
         foreach ($lesSalles as $jeanLaSalle) {
-
             $idsalle = $jeanLaSalle["id"];
             $nom = $jeanLaSalle["nom"];
             echo "<tr>";

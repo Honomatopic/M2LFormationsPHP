@@ -22,7 +22,7 @@ function gestionnaireDeConnexion()
 
 gestionnaireDeConnexion();
 
-//La fonction seConnecter($email) permet à l'employé de se connecter
+// La fonction seConnecter($email) permet à l'employé de se connecter
 function seConnecter($email)
 {
     $cnx = gestionnaireDeConnexion();
@@ -94,7 +94,8 @@ function lireUnEmployeParlId($id)
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
         $req = "SELECT * FROM employe WHERE id='$id'";
-        $lemploye = mysqli_query($cnx, $req);
+		$requete_exec = mysqli_query($cnx, $req);
+        $lemploye = mysqli_fetch_assoc($requete_exec);
     } else {
         echo "Une erreur est survenue";
     }
@@ -159,7 +160,8 @@ function lireLaFormationParlId($id)
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
         $req = "SELECT * FROM formation WHERE id='$id'";
-        $laFormation = mysqli_query($cnx, $req);
+        $requete_exec = mysqli_query($cnx, $req);
+        $laFormation = mysqli_fetch_assoc($requete_exec);
     } else {
         echo "Une erreur est survenue";
     }
@@ -224,7 +226,8 @@ function lireLaDureeParlId($id)
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
         $req = "SELECT * FROM duree WHERE id='$id'";
-        $laDuree = mysqli_query($cnx, $req);
+        $requete_exec = mysqli_query($cnx, $req);
+        $laDuree = mysqli_fetch_assoc($requete_exec);
     } else {
         echo "Une erreur est survenue";
     }
@@ -289,7 +292,8 @@ function lirelIntervenantParlId($id)
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
         $req = "SELECT * FROM intervenant WHERE id='$id'";
-        $lIntervenant = mysqli_query($cnx, $req);
+        $requete_exec = mysqli_query($cnx, $req);
+        $lIntervenant = mysqli_fetch_assoc($requete_exec);
     } else {
         echo "Une erreur est survenue";
     }
@@ -354,7 +358,8 @@ function lirelePrestataireParlId($id)
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
         $req = "SELECT * FROM prestataire WHERE id='$id'";
-        $lePrestataire = mysqli_query($cnx, $req);
+        $requete_exec = mysqli_query($cnx, $req);
+        $lePrestataire = mysqli_fetch_assoc($requete_exec);
     } else {
         echo "Une erreur est survenue";
     }
@@ -419,7 +424,8 @@ function lirelaSalleParlId($id)
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
         $req = "SELECT * FROM salle WHERE id='$id'";
-        $laSalle = mysqli_query($cnx, $req);
+        $requete_exec = mysqli_query($cnx, $req);
+        $laSalle = mysqli_fetch_assoc($requete_exec);
     } else {
         echo "Une erreur est survenue";
     }
@@ -560,7 +566,8 @@ function lirelaSessionAvecInformationParlId($id)
         JOIN intervenant ON session.intervenant_id = intervenant.id 
         JOIN prestataire ON session.prestataire_id = prestataire.id 
         WHERE session.id='$id'";
-        $laSessionParId = mysqli_query($cnx, $req);
+        $requete_exec = mysqli_query($cnx, $req);
+        $laSessionParId = mysqli_fetch_assoc($requete_exec);
     } else {
         echo "Une erreur est survenue";
     }
@@ -573,7 +580,8 @@ function lirelaSessionParlId($id)
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
         $req = "SELECT * FROM session";
-        $laSessionParId = mysqli_query($cnx, $req);
+        $requete_exec = mysqli_query($cnx, $req);
+        $laSessionParId = mysqli_fetch_assoc($requete_exec);
     } else {
         echo "Une erreur est survenue";
     }

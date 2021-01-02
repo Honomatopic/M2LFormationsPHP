@@ -6,8 +6,7 @@ use Dompdf\Options;
 $dompdf = new Dompdf();
 $options = new Options();
 
-$lesSessions = lirelaSessionAvecInformationParlId($_GET["id"]);
-foreach ($lesSessions as $laSession) {
+$laSession = lirelaSessionAvecInformationParlId($_GET["id"]);
 $html = "<link type=\"text/css\" rel=\"stylesheet\" href=\"css/style.css\">";
 $html .= "<img alt=\"Logo\" src=\"images/m2l.png\">";
 $html .= "<p>".$laSession["id"]."</p>";
@@ -19,7 +18,6 @@ $html .= "<p>".$laSession["nom_intervenant"]."</p>";
 $html .= "<p>".$laSession["nom_prestataire"]."</p>";
 $html .= "<hr>";
 $html .= "&copy ".date('Y')." Honoré Rasamoelina";
-}
 $dompdf->loadHtml($html);
 $options->set('isPhpEnabled', true);
 $options->set('defaultFont', 'Calibri');

@@ -3,8 +3,7 @@ include_once ("_entete.inc.php");
 ?>
 
 <?php 
-$lesSessions = lirelaSessionAvecInformationParlId($_GET["id"]);
-foreach ($lesSessions as $laSession) {
+$laSession = lirelaSessionAvecInformationParlId($_GET["id"]);
 echo "<p>".$laSession["id"]."</p>";
 echo "<p>".$laSession["intitule_formation"]."</p>";
 echo "<p>".date("d/m/Y", strtotime($laSession["datedebut"]))."</p>";
@@ -13,7 +12,6 @@ echo "<p>".$laSession["nom_salle"]."</p>";
 echo "<p>".$laSession["prenom_intervenant"]." ".$laSession["nom_intervenant"]."</p>";
 echo "<p>".$laSession["nom_prestataire"]."</p>";
 echo "<td></td>";
-}
 ;?>
 <a href="liremasession.php?eemploye_id=<?php echo $_SESSION["id"] ;?>&ssession_id=<?php echo $laSession["id"];?>"><button>&#128395;&#65039; Me désinscrire de cette formation</button></a>
 <a href="generersessionenpdf.php?id=<?php echo $laSession["id"];?>"><button>&#128195; Génerer le PDF</button></a>
