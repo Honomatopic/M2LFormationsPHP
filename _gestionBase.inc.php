@@ -35,7 +35,7 @@ function seConnecter($email)
     return $lemploye;
 }
 
-// La fonction creerUnEmploye($nom, $prenom, $email, $motpasse, $statut) permet de créer -sans blague - un nouvel employé
+// La fonction creerUnEmploye($nom, $prenom, $email, $motpasse, $statut) permet de créer - sans blague - un nouvel employé
 function creerUnEmploye($nom, $prenom, $email, $motpasse, $statut)
 {
     $cnx = gestionnaireDeConnexion();
