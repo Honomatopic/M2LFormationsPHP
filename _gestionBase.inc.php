@@ -8,7 +8,7 @@ function gestionnaireDeConnexion()
     $cnx = NULL;
     $bdd_hote = "localhost";
     $bdd_utilisateur = "root";
-    $bdd_motpasse = "";
+    $bdd_motpasse = "root";
     $bdd_nom = "m2lformations";
     $cnx = mysqli_connect($bdd_hote, $bdd_utilisateur, $bdd_motpasse, $bdd_nom)
         or die("Pas de connexion à la base de données");
