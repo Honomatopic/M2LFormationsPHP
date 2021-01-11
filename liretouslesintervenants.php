@@ -13,7 +13,6 @@ if (!isset($_SESSION["email"])) {
         <tr>
             <td>Identifiant</td>
             <td>Son nom</td>
-            <td>Son prénom</td>
             <td>Supprimer</td>
             <td>Editer</td>
         </tr>
@@ -26,11 +25,9 @@ if (!isset($_SESSION["email"])) {
 
             $idintervenant = $lintervenant["id"];
             $nom = $lintervenant["nom"];
-            $prenom = $lintervenant["prenom"];
             echo "<tr>";
             echo "<td>$idintervenant</td>";
             echo "<td>$nom</td>";
-            echo "<td>$prenom</td>";
             echo "<td><a href=\"editerintervenant.php?id=" . $idintervenant . "\">&#128465;&#65039; Supprimer</a></td>";
             echo "<td><a href=\"editerintervenant.php?id=" . $idintervenant. "\">&#128395;&#65039; Editer</a></td>";
             echo "</tr>";

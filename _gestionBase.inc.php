@@ -234,11 +234,11 @@ function lireLaDureeParlId($id)
 }
 
 //La fonction creerUnIntervenant() permet comme son nom ne l'indique pas de créer un intervenant
-function creerUnIntervenant($nom, $prenom)
+function creerUnIntervenant($nom)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
-        $req = "INSERT INTO intervenant (nom, prenom) VALUES ('$nom', '$prenom')";
+        $req = "INSERT INTO intervenant (nom) VALUES ('$nom')";
         $creer_intervenant = mysqli_query($cnx, $req);
     } else {
         echo "Une erreur est survenue";
@@ -259,12 +259,12 @@ function supprimerlIntervenant($id)
     return $supprimer_intervenant;
 }
 
-// La fonction editerlIntervenant($id, $nom, $prenom) permet d'éditer un intervenant, un seul
-function editerlIntervenant($id, $nom, $prenom)
+// La fonction editerlIntervenant($id, $nom) permet d'éditer un intervenant, un seul
+function editerlIntervenant($id, $nom)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
-        $req = "UPDATE intervenant SET nom='$nom', prenom='$prenom' WHERE id='$id'";
+        $req = "UPDATE intervenant SET nom='$nom' WHERE id='$id'";
         $editer_intervenant = mysqli_query($cnx, $req);
     } else {
         echo "Une erreur est survenue";
@@ -505,7 +505,6 @@ function lireMesSessions($employe_id)
     duree.datedebut, duree.datefin, 
     salle.nom AS nom_salle, 
     intervenant.nom AS nom_intervenant, 
-    intervenant.prenom AS prenom_intervenant, 
     prestataire.nom AS nom_prestataire
     FROM session 
     JOIN formation ON session.formation_id = formation.id
@@ -532,7 +531,6 @@ function lireTouteslesSessions()
         duree.datedebut, duree.datefin, 
         salle.nom AS nom_salle, 
         intervenant.nom AS nom_intervenant, 
-        intervenant.prenom AS prenom_intervenant, 
         prestataire.nom AS nom_prestataire
         FROM session  
         JOIN formation ON session.formation_id = formation.id
@@ -556,7 +554,6 @@ function lirelaSessionAvecInformationParlId($id)
         duree.datedebut, duree.datefin, 
         salle.nom AS nom_salle, 
         intervenant.nom AS nom_intervenant, 
-        intervenant.prenom AS prenom_intervenant, 
         prestataire.nom AS nom_prestataire
         FROM session  
         JOIN formation ON session.formation_id = formation.id

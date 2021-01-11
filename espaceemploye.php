@@ -32,7 +32,6 @@ if (!isset($_SESSION["email"])) {
                 $datefin = $maSession["datefin"];
                 $salle = $maSession["nom_salle"];
                 $nomintervenant = $maSession["nom_intervenant"];
-                $prenomintervenant = $maSession["prenom_intervenant"];
                 $prestataire = $maSession["nom_prestataire"];
                 echo "<tr>";
                 echo "<td>$idsession</td>";
@@ -40,7 +39,7 @@ if (!isset($_SESSION["email"])) {
                 echo "<td>" . date("d/m/Y", strtotime($datedebut)) . "</td>";
                 echo "<td>" . date("d/m/Y", strtotime($datefin)) . "</td>";
                 echo "<td>$salle</td>";
-                echo "<td>$prenomintervenant $nomintervenant</td>";
+                echo "<td>$nomintervenant</td>";
                 echo "<td>$prestataire</td>";
                 echo "<td><a href=\"liremasession.php?id=" . $idsession . "\">&#128270; Voir le détail</a></td>";
                 echo "</tr>";
