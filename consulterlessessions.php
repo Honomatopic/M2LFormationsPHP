@@ -33,7 +33,6 @@ if (!isset($_SESSION["email"])) {
             $datefin = $laSession["datefin"];
             $salle = $laSession["nom_salle"];
             $nomintervenant = $laSession["nom_intervenant"];
-            $prenomintervenant = $laSession["prenom_intervenant"];
             $prestataire = $laSession["nom_prestataire"];
             echo "<tr>";
             echo "<td>$idsession</td>";

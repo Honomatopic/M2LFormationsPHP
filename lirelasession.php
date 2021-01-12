@@ -9,7 +9,7 @@ echo "<p>".$laSession["intitule_formation"]."</p>";
 echo "<p>".date("d/m/Y", strtotime($laSession["datedebut"]))."</p>";
 echo "<p>".date("d/m/Y", strtotime($laSession["datefin"]))."</p>";
 echo "<p>".$laSession["nom_salle"]."</p>";
-echo "<p>".$laSession["prenom_intervenant"]." ".$laSession["nom_intervenant"]."</p>";
+echo "<p>".$laSession["nom_intervenant"]."</p>";
 echo "<p>".$laSession["nom_prestataire"]."</p>";
 echo "<td></td>";
 ;?>
