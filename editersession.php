@@ -45,10 +45,10 @@ if (isset($_GET["id"])) {
 		<br>
 		<select name="intervenant">
 			<?php $lIntervenantEdite = lirelIntervenantParlId($intervenant);
-			echo "<option value=" . $lIntervenantEdite["id"] . ">" . $lIntervenantEdite["id"] . " - " . $lIntervenantEdite["prenom"] . " " . $lIntervenantEdite["nom"] . "</option>";
+			echo "<option value=" . $lIntervenantEdite["id"] . ">" . $lIntervenantEdite["id"] . " - " . $lIntervenantEdite["nom"] . "</option>";
 			$lesIntervenants = lireTouslesIntervenants();
 			foreach ($lesIntervenants as $lIntervenant) {
-				echo "<option value=" . $lIntervenant["id"] . ">" . $lIntervenant["id"] . " - " . $lIntervenant["prenom"] . " " . $lIntervenant["nom"] . "</option>";
+				echo "<option value=" . $lIntervenant["id"] . ">" . $lIntervenant["id"] . " - " . $lIntervenant["nom"] . "</option>";
 			}; ?>
 		</select>
 		<br>

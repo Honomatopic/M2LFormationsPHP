@@ -40,7 +40,7 @@ if (!isset($_SESSION["email"])) {
             echo "<td>". date("d/m/Y", strtotime($datedebut))."</td>";
             echo "<td>". date("d/m/Y", strtotime($datefin))."</td>";
             echo "<td>$salle</td>";
-            echo "<td>$prenomintervenant $nomintervenant</td>";
+            echo "<td>$nomintervenant</td>";
             echo "<td>$prestataire</td>";
             echo "<td><a href=\"lirelasession.php?id=" . $idsession . "\">&#128269; Voir le détail</a></td>";
             echo "</tr>";

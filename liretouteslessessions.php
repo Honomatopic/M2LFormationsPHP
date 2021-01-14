@@ -41,7 +41,7 @@ if (!isset($_SESSION["email"])) {
             echo "<td>". date("d/m/Y", strtotime($datedebut))."</td>";
             echo "<td>". date("d/m/Y", strtotime($datefin))."</td>";
             echo "<td>$salle</td>";
-            echo "<td>$prenomintervenant $nomintervenant</td>";
+            echo "<td>$nomintervenant</td>";
             echo "<td>$prestataire</td>";
             echo "<td><a href=\"editersession.php?id=" . $idsession . "\">&#128465;&#65039; Supprimer</a></td>";
             echo "<td><a href=\"editersession.php?id=" . $idsession . "\">&#128395;&#65039; Editer</a></td>";
