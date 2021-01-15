@@ -1,29 +1,28 @@
 <?php
-include_once ("_gestionBase.inc.php");
-include_once 'dompdf/autoload.inc.php';
-use Dompdf\Dompdf;
-use Dompdf\Options;
-$dompdf = new Dompdf();
-$options = new Options();
 
+include_once ("_gestionBase.inc.php");
+include_once('fpdf/fpdf.php');
+
+
+
+$pdf = new FPDF();
+$pdf->AddPage();
+$pdf->AddFont('Calibri', '', 'calibri.php');
+$pdf->SetFont('Calibri', '', 16);
 $laSession = lirelaSessionAvecInformationParlId($_GET["id"]);
-$html = "<link type=\"text/css\" rel=\"stylesheet\" href=\"css/style.css\">";
-$html .= "<img alt=\"Logo\" src=\"images/m2l.png\">";
-$html .= "<p>".$laSession["id"]."</p>";
-$html .= "<p>".$laSession["intitule_formation"]."</p>";
-$html .= "<p>".date("d/m/Y", strtotime($laSession["datedebut"]))."</p>";
-$html .= "<p>".date("d/m/Y", strtotime($laSession["datefin"]))."</p>";
-$html .= "<p>".$laSession["nom_salle"]."</p>";
-$html .= "<p>".$laSession["nom_intervenant"]."</p>";
-$html .= "<p>".$laSession["nom_prestataire"]."</p>";
-$html .= "<hr>";
-$html .= "&copy ".date('Y')." Honoré Rasamoelina";
-$dompdf->loadHtml($html);
-$options->set('isPhpEnabled', true);
-$options->set('defaultFont', 'Calibri');
-$dompdf->setPaper('A4', 'landscape');
-$dompdf->render();
-$dompdf->stream("pdf/".$laSession["intitule_formation"].".pdf", array("Attachment" => false));
-file_put_contents("pdf/".$laSession["intitule_formation"].".pdf", $dompdf->output());
+$pdf->SetTitle($laSession["intitule_formation"]);
+$pdf->Image('images/m2l.png', 50, 20, 100);
+$pdf->Text(100, 100, $laSession["id"]);
+$pdf->Text(80, 110, $laSession["intitule_formation"]);
+$pdf->Text(90, 120, date("d/m/Y", strtotime($laSession["datedebut"])));
+$pdf->Text(90, 130, date("d/m/Y", strtotime($laSession["datefin"])));
+$pdf->Text(90, 140, $laSession["nom_salle"]);
+$pdf->Text(90, 150, $laSession["nom_intervenant"]);
+$pdf->Text(95, 160, $laSession["nom_prestataire"]);
+$chemin = "pdf/".$laSession["intitule_formation"].".pdf";
+$pdf->output("",$chemin, $laSession["intitule_formation"].".pdf");
+/*file_put_contents("pdf/".$laSession["intitule_formation"].".pdf", $pdf->output('', 'pdf/'.$laSession["intitule_formation"].'.pdf',true));*/
+
+
 
 ?>

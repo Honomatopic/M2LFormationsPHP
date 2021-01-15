@@ -32,7 +32,7 @@ if (!isset($_SESSION["email"])) {
             $datedebut = $laSession["datedebut"];
             $datefin = $laSession["datefin"];
             $salle = $laSession["nom_salle"];
-            $nomintervenant = $laSession["nom_intervenant"];
+            $intervenant = $laSession["nom_intervenant"];
             $prestataire = $laSession["nom_prestataire"];
             echo "<tr>";
             echo "<td>$idsession</td>";
@@ -40,7 +40,7 @@ if (!isset($_SESSION["email"])) {
             echo "<td>". date("d/m/Y", strtotime($datedebut))."</td>";
             echo "<td>". date("d/m/Y", strtotime($datefin))."</td>";
             echo "<td>$salle</td>";
-            echo "<td>$nomintervenant</td>";
+            echo "<td>$intervenant</td>";
             echo "<td>$prestataire</td>";
             echo "<td><a href=\"lirelasession.php?id=" . $idsession . "\">&#128269; Voir le détail</a></td>";
             echo "</tr>";
