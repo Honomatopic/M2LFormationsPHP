@@ -10,6 +10,6 @@
 
 </fieldset>
 <br>
-<a href="liretouslesprestataires.php">&#128269; Voir tous les prestataires
+<a href="consulterToutLesPrestataires.php">&#128269; Voir tous les prestataires
 </a>
 <?php include_once ("_piedpage.inc.php"); ?>

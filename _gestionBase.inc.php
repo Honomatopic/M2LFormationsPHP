@@ -35,8 +35,8 @@ function seConnecter($email)
     return $lemploye;
 }
 
-// La fonction creerUnEmploye($nom, $prenom, $email, $motpasse, $statut) permet de créer - sans blague - un nouvel employé
-function creerUnEmploye($nom, $prenom, $email, $motpasse, $statut)
+// La fonction creerLEmploye($nom, $prenom, $email, $motpasse, $statut) permet de créer - sans blague - un nouvel employé
+function creerLEmploye($nom, $prenom, $email, $motpasse, $statut)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -48,8 +48,8 @@ function creerUnEmploye($nom, $prenom, $email, $motpasse, $statut)
     return $creer_employe;
 }
 
-// La fonction supprimerlEmploye($id) permet de supprimer un employé par quoi ? Son id pardi
-function supprimerlEmploye($id)
+// La fonction supprimerLEmploye($id) permet de supprimer un employé par quoi ? Son id pardi
+function supprimerLEmploye($id)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -61,21 +61,21 @@ function supprimerlEmploye($id)
     return $supprimer_employe;
 }
 
-// La fonction editerlEmploye($nom, $prenom, $email, $motpasse, $statut, $id) permet d'éditer les informations d'un employé avec son id voyons !
-function editerlEmploye($nom, $prenom, $email, $motpasse, $statut, $id)
+// La fonction modifierLEmploye($nom, $prenom, $email, $motpasse, $statut, $id) permet d'éditer les informations d'un employé avec son id voyons !
+function modifierLEmploye($nom, $prenom, $email, $motpasse, $statut, $id)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
         $req = "UPDATE employe SET nom='$nom', prenom='$prenom', email='$email', motpasse='$motpasse', statut='$statut' WHERE id='$id'";
-        $editer_employe = mysqli_query($cnx, $req);
+        $modifier_employe = mysqli_query($cnx, $req);
     } else {
         echo "Une erreur est survenue";
     }
-    return $editer_employe;
+    return $modifier_employe;
 }
 
-// La fonction lireTouslesEmployes() permet d'afficher tous les employés de l'association, d'un coup !
-function lireTouslesEmployes()
+// La fonction consulterToutlesEmployes() permet d'afficher tous les employés de l'association, d'un coup !
+function consulterToutlesEmployes()
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -87,8 +87,8 @@ function lireTouslesEmployes()
     return $lesEmployes;
 }
 
-// La fonction lireUnEmployeParlId($id) permet d'afficher dans un formulaire les informations d'un employé
-function lireUnEmployeParlId($id)
+// La fonction consulterLEmployeParLId($id) permet d'afficher dans un formulaire les informations d'un employé
+function consulterLEmployeParLId($id)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -101,8 +101,8 @@ function lireUnEmployeParlId($id)
     return $lemploye;
 }
 
-//La fonction creerUneFormation($intitule) permet comme son nom ne l'indique pas de créer une formation
-function creerUneFormation($intitule)
+//La fonction creerLaFormation($intitule) permet comme son nom ne l'indique pas de créer une formation
+function creerLaFormation($intitule)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -127,21 +127,21 @@ function supprimerLaFormation($id)
     return $supprimer_formation;
 }
 
-// La fonction editerLaFormation() permet d'éditer une formation, une seule
-function editerLaFormation($id, $intitule)
+// La fonction modifierLaFormation() permet d'éditer une formation, une seule
+function modifierLaFormation($id, $intitule)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
         $req = "UPDATE formation SET intitule='$intitule' WHERE id='$id'";
-        $editer_formation = mysqli_query($cnx, $req);
+        $modifier_formation = mysqli_query($cnx, $req);
     } else {
         echo "Une erreur est survenue";
     }
-    return $editer_formation;
+    return $modifier_formation;
 }
 
-// La fonction lireTouteslesFormations() permet de sélectionner toutes les formations
-function lireTouteslesFormations()
+// La fonction consulterToutesLesFormations() permet de sélectionner toutes les formations
+function consulterToutesLesFormations()
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -153,8 +153,8 @@ function lireTouteslesFormations()
     return $lesFormations;
 }
 
-// La fonction lireLaFormationParlId($id) permet de selectionner une formation par, devinez quoi ?, l'id
-function lireLaFormationParlId($id)
+// La fonction consulterLaFormationParLId($id) permet de selectionner une formation par, devinez quoi ?, l'id
+function consulterLaFormationParLId($id)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -167,8 +167,8 @@ function lireLaFormationParlId($id)
     return $laFormation;
 }
 
-//La fonction creerUneDuree() permet comme son nom ne l'indique pas de créer une durée
-function creerUneDuree($datedebut, $datefin)
+//La fonction creerLaDuree() permet comme son nom ne l'indique pas de créer une durée
+function creerLaDuree($datedebut, $datefin)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -193,21 +193,21 @@ function supprimerLaDuree($id)
     return $supprimer_duree;
 }
 
-// La fonction editerLaDuree($id, $datedebut, $datefin) permet d'éditer une durée, une seule
-function editerLaDuree($id, $datedebut, $datefin)
+// La fonction modifierLaDuree($id, $datedebut, $datefin) permet d'éditer une durée, une seule
+function modifierLaDuree($id, $datedebut, $datefin)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
         $req = "UPDATE duree SET datedebut='$datedebut', datefin='$datefin' WHERE id='$id'";
-        $editer_duree = mysqli_query($cnx, $req);
+        $modifier_duree = mysqli_query($cnx, $req);
     } else {
         echo "Une erreur est survenue";
     }
-    return $editer_duree;
+    return $modifier_duree;
 }
 
-// La fonction lireTouteslesDurees() permet de sélectionner toutes les durées
-function lireTouteslesDurees()
+// La fonction consulterToutesLesDurees() permet de sélectionner toutes les durées
+function consulterToutesLesDurees()
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -219,8 +219,8 @@ function lireTouteslesDurees()
     return $lesDurees;
 }
 
-// La fonction lireLaDureeParlId($id) permet de selectionner une durée par, devinez quoi ?, l'id
-function lireLaDureeParlId($id)
+// La fonction consulterLaDureeParLId($id) permet de selectionner une durée par, devinez quoi ?, l'id
+function consulterLaDureeParLId($id)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -233,8 +233,8 @@ function lireLaDureeParlId($id)
     return $laDuree;
 }
 
-//La fonction creerUnIntervenant() permet comme son nom ne l'indique pas de créer un intervenant
-function creerUnIntervenant($nom)
+//La fonction creerLIntervenant() permet comme son nom ne l'indique pas de créer un intervenant
+function creerLIntervenant($nom)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -246,8 +246,8 @@ function creerUnIntervenant($nom)
     return $creer_intervenant;
 }
 
-// La fonction supprimerlIntervenant($id) permet de supprimer quoi ? Un intervenant par l'id pardi
-function supprimerlIntervenant($id)
+// La fonction supprimerLIntervenant($id) permet de supprimer quoi ? Un intervenant par l'id pardi
+function supprimerLIntervenant($id)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -259,21 +259,21 @@ function supprimerlIntervenant($id)
     return $supprimer_intervenant;
 }
 
-// La fonction editerlIntervenant($id, $nom) permet d'éditer un intervenant, un seul
-function editerlIntervenant($id, $nom)
+// La fonction modifierLIntervenant($id, $nom) permet d'éditer un intervenant, un seul
+function modifierLIntervenant($id, $nom)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
         $req = "UPDATE intervenant SET nom='$nom' WHERE id='$id'";
-        $editer_intervenant = mysqli_query($cnx, $req);
+        $modifier_intervenant = mysqli_query($cnx, $req);
     } else {
         echo "Une erreur est survenue";
     }
-    return $editer_intervenant;
+    return $modifier_intervenant;
 }
 
-// La fonction lireTouslesIntervenants() permet de sélectionner tous les intervenants
-function lireTouslesIntervenants()
+// La fonction consulterToutLesIntervenants() permet de sélectionner tous les intervenants
+function consulterToutLesIntervenants()
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -285,8 +285,8 @@ function lireTouslesIntervenants()
     return $lesintervenants;
 }
 
-// La fonction lirelIntervenantParlId() permet de selectionner un intervenant par, devinez quoi ?, l'id
-function lirelIntervenantParlId($id)
+// La fonction consulterlIntervenantParlId() permet de selectionner un intervenant par, devinez quoi ?, l'id
+function consulterLIntervenantParLId($id)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -299,8 +299,8 @@ function lirelIntervenantParlId($id)
     return $lIntervenant;
 }
 
-//La fonction creerUnPrestataire() permet comme son nom ne l'indique pas de créer un prestataire
-function creerUnPrestataire($nom)
+//La fonction creerLePrestataire() permet comme son nom ne l'indique pas de créer un prestataire
+function creerLePrestataire($nom)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -312,8 +312,8 @@ function creerUnPrestataire($nom)
     return $creer_prestataire;
 }
 
-// La fonction supprimerlePrestataire() permet de supprimer quoi ? Un prestataire par l'id pardi
-function supprimerlePrestataire($id)
+// La fonction supprimerLePrestataire() permet de supprimer quoi ? Un prestataire par l'id pardi
+function supprimerLePrestataire($id)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -325,21 +325,21 @@ function supprimerlePrestataire($id)
     return $supprimer_prestataire;
 }
 
-// La fonction editerlePrestataire() permet d'éditer un prestataire, un seul
-function editerlePrestataire($id, $nom)
+// La fonction modifierLePrestataire() permet d'éditer un prestataire, un seul
+function modifierLePrestataire($id, $nom)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
         $req = "UPDATE prestataire SET nom='$nom' WHERE id='$id'";
-        $editer_prestataire = mysqli_query($cnx, $req);
+        $modifier_prestataire = mysqli_query($cnx, $req);
     } else {
         echo "Une erreur est survenue";
     }
-    return $editer_prestataire;
+    return $modifier_prestataire;
 }
 
-// La fonction lireTouslesPrestataires() permet de sélectionner tous les prestataires
-function lireTouslesPrestataires()
+// La fonction consulterTousLesPrestataires() permet de sélectionner tous les prestataires
+function consulterToutLesPrestataires()
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -351,8 +351,8 @@ function lireTouslesPrestataires()
     return $lesPrestataires;
 }
 
-// La fonction lirelePrestataireParlId() permet de selectionner un prestataire par, devinez quoi ?, l'id
-function lirelePrestataireParlId($id)
+// La fonction consulterLePrestataireParLId() permet de selectionner un prestataire par, devinez quoi ?, l'id
+function consulterLePrestataireParLId($id)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -365,8 +365,8 @@ function lirelePrestataireParlId($id)
     return $lePrestataire;
 }
 
-//La fonction creerUneSalle() permet comme son nom ne l'indique pas de créer une salle
-function creerUneSalle($nom)
+//La fonction creerLaSalle() permet comme son nom ne l'indique pas de créer une salle
+function creerLaSalle($nom)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -378,8 +378,8 @@ function creerUneSalle($nom)
     return $creer_salle;
 }
 
-// La fonction supprimerlaSalle() permet de supprimer quoi ? Une salle par l'id pardi
-function supprimerlaSalle($id)
+// La fonction supprimerLaSalle() permet de supprimer quoi ? Une salle par l'id pardi
+function supprimerLaSalle($id)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -391,21 +391,21 @@ function supprimerlaSalle($id)
     return $supprimer_salle;
 }
 
-// La fonction editerleSalle() permet d'éditer une salle, une seule
-function editerlaSalle($id, $nom)
+// La fonction modifierLaSalle() permet d'éditer une salle, une seule salle sivioupliait
+function modifierLaSalle($id, $nom)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
         $req = "UPDATE salle SET nom='$nom' WHERE id='$id'";
-        $editer_salle = mysqli_query($cnx, $req);
+        $modifier_salle = mysqli_query($cnx, $req);
     } else {
         echo "Une erreur est survenue";
     }
-    return $editer_salle;
+    return $modifier_salle;
 }
 
-// La fonction lireTouteslesSalles() permet de sélectionner toutes les salles
-function lireTouteslesSalles()
+// La fonction consulterToutesLesSalles() permet de sélectionner toutes les salles
+function consulterToutesLesSalles()
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -417,8 +417,8 @@ function lireTouteslesSalles()
     return $lesSalles;
 }
 
-// La fonction lirelaSalleParlId() permet de selectionner une salle par, devinez quoi ?, l'id
-function lirelaSalleParlId($id)
+// La fonction consulterLaSalleParlId() permet de selectionner une salle par, devinez quoi ?, l'id
+function consulterLaSalleParLId($id)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -431,8 +431,8 @@ function lirelaSalleParlId($id)
     return $laSalle;
 }
 
-//La fonction creerUneSession() permet comme son nom ne l'indique pas de créer une session de formation
-function creerUneSession($formation, $duree, $salle, $intervenant, $prestataire)
+//La fonction creerLaSession() permet comme son nom ne l'indique pas de créer une session de formation
+function creerLaSession($formation, $duree, $salle, $intervenant, $prestataire)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -444,8 +444,8 @@ function creerUneSession($formation, $duree, $salle, $intervenant, $prestataire)
     return $creer_session;
 }
 
-// La fonction supprimerlaSession() permet de supprimer quoi ? Une session de formation par l'id pardi
-function supprimerlaSession($id)
+// La fonction supprimerLaSession() permet de supprimer quoi ? Une session de formation par l'id pardi
+function supprimerLaSession($id)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -457,21 +457,21 @@ function supprimerlaSession($id)
     return $supprimer_session;
 }
 
-// La fonction editerleSession() permet d'éditer une session de formation, une seule
-function editerlaSession($id, $formation, $duree, $salle, $intervenant, $prestataire)
+// La fonction modifierLaSession() permet d'éditer une session de formation, une seule
+function modifierLaSession($id, $formation, $duree, $salle, $intervenant, $prestataire)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
         $req = "UPDATE session SET formation_id='$formation', duree_id='$duree', salle_id='$salle', intervenant_id='$intervenant', prestataire_id='$prestataire' WHERE id='$id'";
-        $editer_session = mysqli_query($cnx, $req);
+        $modifier_session = mysqli_query($cnx, $req);
     } else {
         echo "Une erreur est survenue";
     }
-    return $editer_session;
+    return $modifier_session;
 }
 
-// La fonction sinscrireAUneSession() permet - surprise - de s'inscrire à une session de formation pour l'employé
-function sinscrireAUneSession($employe_id, $session_id)
+// La fonction sInscrireALaSession() permet - surprise - de s'inscrire à une session de formation pour l'employé
+function sInscrireALaSession($employe_id, $session_id)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -483,8 +483,8 @@ function sinscrireAUneSession($employe_id, $session_id)
     return $inscrire_session;
 }
 
-// La fonction SeDesinscrireAMaSession($employe_id, $session_id) permet de se désinscrire à une session de formation et voilà
-function SeDesinscrireAMaSession($employe_id, $session_id)
+// La fonction seDesinscrireDeMaSession($employe_id, $session_id) permet de se désinscrire à une session de formation et voilà
+function seDesinscrireDeMaSession($employe_id, $session_id)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -496,8 +496,8 @@ function SeDesinscrireAMaSession($employe_id, $session_id)
     return $desinscrire_session;
 }
 
-// La fonction lireMesSessions($employe_id) permet de sélectionner toutes mes sessions de formations
-function lireMesSessions($employe_id)
+// La fonction consulterMesSessions($employe_id) permet de sélectionner toutes mes sessions de formations
+function consulterMesSessions($employe_id)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -522,8 +522,8 @@ function lireMesSessions($employe_id)
     return $mesSessions;
 }
 
-// La fonction lireTouteslesSessions() permet de - à votre avis - de lire toutes les sessions existantes
-function lireTouteslesSessions()
+// La fonction consulterToutesLesSessions() permet de - à votre avis - de consulter toutes les sessions existantes
+function consulterToutesLesSessions()
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -545,8 +545,8 @@ function lireTouteslesSessions()
     return $lesSessions;
 }
 
-// La fonction lirelaSessionAvecInformationParlId() permet de selectionner une session de formation par, devinez quoi ?, l'id mais en affichant les informations supplémentaires comme par exemple le nom de la formation, de la salle, de l'intervenant, de la durée et du prestataire
-function lirelaSessionAvecInformationParlId($id)
+// La fonction consulterLaSessionAvecInformationParLId() permet de selectionner une session de formation par, devinez quoi ?, l'id mais en affichant les informations supplémentaires comme par exemple le nom de la formation, de la salle, de l'intervenant, de la durée et du prestataire
+function consulterLesInformationsDeLaSessionParLId($id)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
@@ -570,12 +570,12 @@ function lirelaSessionAvecInformationParlId($id)
     return $laSessionParId ;
 }
 
-// La fonction lirelaSessionParlId() permet de selectionner une session de formation par, devinez quoi ?, l'id
-function lirelaSessionParlId($id)
+// La fonction consulterLesSessionsParLId() permet de selectionner une session de formation par, devinez quoi ?, l'id
+function consulterLesSessionsParLId($id)
 {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
-        $req = "SELECT * FROM session";
+        $req = "SELECT * FROM session WHERE id='$id'";
         $requete_exec = mysqli_query($cnx, $req);
         $laSessionParId = mysqli_fetch_assoc($requete_exec);
     } else {

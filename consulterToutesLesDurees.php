@@ -20,7 +20,7 @@ if (!isset($_SESSION["email"])) {
     </thead>
     <tbody>
         <?php
-        $lesDurees = lireTouteslesDurees();
+        $lesDurees = consulterToutesLesDurees();
         echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
         foreach ($lesDurees as $laDuree) {
 
@@ -31,8 +31,8 @@ if (!isset($_SESSION["email"])) {
             echo "<td>$idduree</td>";
             echo "<td>".date("d/m/Y", strtotime($datedebut))."</td>";
             echo "<td>".date("d/m/Y", strtotime($datefin))."</td>";
-            echo "<td><a href=\"editerduree.php?id=" . $idduree . "\">&#128465;&#65039; Supprimer</a></td>";
-            echo "<td><a href=\"editerduree.php?id=" . $idduree . "\">&#128395;&#65039; Editer</a></td>";
+            echo "<td><a href=\"modifierLaDuree.php?id=" . $idduree . "\">&#128465;&#65039; Supprimer</a></td>";
+            echo "<td><a href=\"modifierLaDuree.php?id=" . $idduree . "\">&#128395;&#65039; Modifier</a></td>";
             echo "</tr>";
         }
         echo "</form>";
@@ -40,7 +40,7 @@ if (!isset($_SESSION["email"])) {
     </tbody>
 </table>
 <br>
-<a href="creerduree.php">&#128395; Pour créer une durée, c'est ici</a>
+<a href="creerLaDuree.php">&#128395; Pour créer une durée, c'est ici</a>
 <?php
 include_once ("_piedpage.inc.php");
 ?>

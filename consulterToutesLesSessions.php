@@ -24,7 +24,7 @@ if (!isset($_SESSION["email"])) {
     </thead>
     <tbody>
         <?php
-        $lesSessions = lireTouteslesSessions();
+        $lesSessions = consulterToutesLesSessions();
         echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
         foreach ($lesSessions as $laSession) {
 
@@ -43,8 +43,8 @@ if (!isset($_SESSION["email"])) {
             echo "<td>$salle</td>";
             echo "<td>$nomintervenant</td>";
             echo "<td>$prestataire</td>";
-            echo "<td><a href=\"editersession.php?id=" . $idsession . "\">&#128465;&#65039; Supprimer</a></td>";
-            echo "<td><a href=\"editersession.php?id=" . $idsession . "\">&#128395;&#65039; Editer</a></td>";
+            echo "<td><a href=\"modifierLaSession.php?id=" . $idsession . "\">&#128465;&#65039; Supprimer</a></td>";
+            echo "<td><a href=\"modifierLaSession.php?id=" . $idsession . "\">&#128395;&#65039; Modifier</a></td>";
             echo "</tr>";
         }
         echo "</form>";
@@ -52,7 +52,7 @@ if (!isset($_SESSION["email"])) {
     </tbody>
 </table>
 <br>
-<a href="creersession.php">&#128395; Pour créer une session de formation, c'est ici</a>
+<a href="creerLaSession.php">&#128395; Pour créer une session de formation, c'est ici</a>
 <?php
 include_once ("_piedpage.inc.php");
 ?>

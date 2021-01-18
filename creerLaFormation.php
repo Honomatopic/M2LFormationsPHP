@@ -10,5 +10,5 @@
 
 </fieldset>
 <br>
-<a href="liretouteslesformations.php">&#128269; Voir toutes les formations</a>
+<a href="consulterToutesLesFormations.php">&#128269; Voir toutes les formations</a>
 <?php include_once ("_piedpage.inc.php"); ?>

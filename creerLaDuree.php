@@ -14,5 +14,5 @@
 
 </fieldset>
 <br>
-<a href="liretouteslesdurees.php">&#128269; Voir toutes les durées</a>
+<a href="consulterToutesLesDurees.php">&#128269; Voir toutes les durées</a>
 <?php include_once ("_piedpage.inc.php"); ?>

@@ -6,7 +6,7 @@
 	<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
 		<select name="formation">
 			<option value="">--Choisissez votre formation--</option>
-			<?php $lesFormations = lireTouteslesFormations();
+			<?php $lesFormations = consulterToutesLesFormations();
 			foreach ($lesFormations as $laFormation) {
 				echo "<option value=".$laFormation["id"].">". $laFormation["id"]. " - ". $laFormation["intitule"]."</option>";
 			}; ?>
@@ -14,7 +14,7 @@
 		<br>
 		<select name="duree">
 			<option value="">--Choisissez votre durée--</option>
-			<?php $lesDurees = lireTouteslesDurees();
+			<?php $lesDurees = consulterToutesLesDurees();
 			foreach ($lesDurees as $laDuree) {
 				echo "<option value=".$laDuree["id"].">Du " .date("d/m/Y", strtotime($laDuree["datedebut"])). " au " .date("d/m/Y", strtotime($laDuree["datefin"])) ."</option>";
 			}; ?>
@@ -22,7 +22,7 @@
 		<br>
 		<select name="salle">
 			<option value="">--Choisissez votre salle--</option>
-			<?php $lesSalles = lireTouteslesSalles();
+			<?php $lesSalles = consulterToutesLesSalles();
 			foreach ($lesSalles as $jeanlaSalle) {
 				echo "<option value=".$jeanlaSalle["id"].">". $jeanlaSalle["id"]. " - " .$jeanlaSalle["nom"] ."</option>";
 			}; ?>
@@ -30,7 +30,7 @@
 		<br>
 		<select name="intervenant">
 			<option value="">--Choisissez l'intervenant--</option>
-			<?php $lesIntervenants = lireTouslesIntervenants();
+			<?php $lesIntervenants = consulterToutLesIntervenants();
 			foreach ($lesIntervenants as $lIntervenant) {
 				echo "<option value=".$lIntervenant["id"].">". $lIntervenant["id"]. " - " .$lIntervenant["prenom"]. " ".$lIntervenant["nom"]."</option>";
 			}; ?>
@@ -38,7 +38,7 @@
 		<br>
 		<select name="prestataire">
 			<option value="">--Choisissez le prestataire--</option>
-			<?php $lesPrestataires = lireTouslesPrestataires();
+			<?php $lesPrestataires = consulterToutLesPrestataires();
 			foreach ($lesPrestataires as $lePrestataire) {
 				echo "<option value=".$lePrestataire["id"].">". $lePrestataire["id"]. " - " .$lePrestataire["nom"]."</option>";
 			}; ?>
@@ -49,6 +49,6 @@
 
 </fieldset>
 <br>
-<a href="liretouteslessessions.php">&#128269; Voir toutes les sessions
+<a href="consulterLesSessions.php">&#128269; Voir toutes les sessions
 </a>
 <?php include_once ("_piedpage.inc.php"); ?>

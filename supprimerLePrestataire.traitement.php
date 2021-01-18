@@ -6,6 +6,6 @@ if (isset($_POST["supprimerprestataire"])) {
     if (isset($_POST["id"])) {
         supprimerlePrestataire($_POST["id"]);
         echo "<section class=\"reussie\">Le prestataire est supprimé</section>";
-        header("location:liretouslesprestataires.php");
+        header("location:consulterToutLesPrestataires.php");
     }
 }

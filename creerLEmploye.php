@@ -18,5 +18,5 @@
 
 </fieldset>
 <br>
-<a href="liretouslesemployes.php">&#128269; Voir toutes les employés</a>
+<a href="consulterToutLesEmployes.php">&#128269; Voir toutes les employés</a>
 <?php include_once ("_piedpage.inc.php"); ?>

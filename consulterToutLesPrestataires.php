@@ -19,7 +19,7 @@ if (!isset($_SESSION["email"])) {
     </thead>
     <tbody>
         <?php
-        $lesPrestataires = lireTouslesPrestataires();
+        $lesPrestataires = consulterToutLesPrestataires();
         echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
         foreach ($lesPrestataires as $lePrestataire) {
 
@@ -28,8 +28,8 @@ if (!isset($_SESSION["email"])) {
             echo "<tr>";
             echo "<td>$idprestataire</td>";
             echo "<td>$nom</td>";
-            echo "<td><a href=\"editerprestataire.php?id=" . $idprestataire . "\">&#128465;&#65039; Supprimer</a></td>";
-            echo "<td><a href=\"editerprestataire.php?id=" . $idprestataire. "\">&#128395;&#65039; Editer</a></td>";
+            echo "<td><a href=\"modifierLePrestataire.php?id=" . $idprestataire . "\">&#128465;&#65039; Supprimer</a></td>";
+            echo "<td><a href=\"modifierLePrestataire.php?id=" . $idprestataire. "\">&#128395;&#65039; Modifier</a></td>";
             echo "</tr>";
         }
         echo "</form>";
@@ -37,7 +37,7 @@ if (!isset($_SESSION["email"])) {
     </tbody>
 </table>
 <br>
-<a href="creerprestataire.php">&#128395; Pour créer un prestataire, c'est ici</a>
+<a href="creerLePrestataire.php">&#128395; Pour créer un prestataire, c'est ici</a>
 <?php
 include_once ("_piedpage.inc.php");
 ?>

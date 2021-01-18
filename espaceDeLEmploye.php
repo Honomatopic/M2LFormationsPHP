@@ -22,7 +22,7 @@ if (!isset($_SESSION["email"])) {
     </thead>
     <tbody>
         <?php
-        $mesSessions = lireMesSessions($_SESSION["id"]);
+        $mesSessions = consulterMesSessions($_SESSION["id"]);
         echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
         
             foreach ($mesSessions as $maSession) {
@@ -41,7 +41,7 @@ if (!isset($_SESSION["email"])) {
                 echo "<td>$salle</td>";
                 echo "<td>$nomintervenant</td>";
                 echo "<td>$prestataire</td>";
-                echo "<td><a href=\"liremasession.php?id=" . $idsession . "\">&#128270; Voir le détail</a></td>";
+                echo "<td><a href=\"consulterMaSession.php?id=" . $idsession . "\">&#128270; Voir le détail</a></td>";
                 echo "</tr>";
             }
         

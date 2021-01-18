@@ -19,7 +19,7 @@ if (!isset($_SESSION["email"])) {
     </thead>
     <tbody>
         <?php
-        $lesFormations = lireTouteslesFormations();
+        $lesFormations = consulterToutesLesFormations();
         echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
         foreach ($lesFormations as $laFormation) {
 
@@ -28,8 +28,8 @@ if (!isset($_SESSION["email"])) {
             echo "<tr>";
             echo "<td>$idformation</td>";
             echo "<td>$intitule</td>";
-            echo "<td><a href=\"editerformation.php?id=" . $idformation . "\">&#128465;&#65039; Supprimer</a></td>";
-            echo "<td><a href=\"editerformation.php?id=" . $idformation . "\">&#128395;&#65039; Editer</a></td>";
+            echo "<td><a href=\"modifierLaFormation.php?id=" . $idformation . "\">&#128465;&#65039; Supprimer</a></td>";
+            echo "<td><a href=\"modifierLaFormation.php?id=" . $idformation . "\">&#128395;&#65039; Modifier</a></td>";
             echo "</tr>";
         }
         echo "</form>";
@@ -37,7 +37,7 @@ if (!isset($_SESSION["email"])) {
     </tbody>
 </table>
 <br>
-<a href="creerformation.php">&#128395; Pour créer une formation, c'est ici</a>
+<a href="creerLaFormation.php">&#128395; Pour créer une formation, c'est ici</a>
 <?php
 include_once ("_piedpage.inc.php");
 ?>

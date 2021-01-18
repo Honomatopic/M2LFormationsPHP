@@ -10,5 +10,5 @@
 
 </fieldset>
 <br>
-<a href="liretouslesintervenants.php">&#128269; Voir toutes les intervenants</a>
+<a href="consulterToutLesIntervenants.php">&#128269; Voir toutes les intervenants</a>
 <?php include_once ("_piedpage.inc.php"); ?>

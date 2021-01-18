@@ -1,13 +1,13 @@
 <?php
 include_once ("_entete.inc.php");
 
-// Algorithme permettant d'éditer un prestataire
-if (isset($_POST["editerprestataire"])) {
+// Algorithme permettant de modifier un prestataire
+if (isset($_POST["modifierprestataire"])) {
     if (isset($_POST["id"], $_POST["nom"])) {
-        editerlePrestataire($_POST["id"], $_POST["nom"]);
-        echo "<section class=\"reussie\">Le prestataire est bien édité</section>";
-        header("location:liretouslesprestataires.php");
+        modifierLePrestataire($_POST["id"], $_POST["nom"]);
+        echo "<section class=\"reussie\">Le prestataire est bien modifié</section>";
+        header("location:consulterToutLesPrestataires.php");
     } else {
-        echo "<section class=\"echoue\">Le prestataire n'est pas édité</section>";
+        echo "<section class=\"echoue\">Le prestataire n'est pas modifié</section>";
     }
 }

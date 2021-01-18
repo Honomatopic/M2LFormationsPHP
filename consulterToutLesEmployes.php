@@ -23,7 +23,7 @@ if (!isset($_SESSION["email"])) {
     </thead>
     <tbody>
         <?php
-        $lesEmployes = lireTouslesEmployes();
+        $lesEmployes = consulterToutlesEmployes();
         echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
         foreach ($lesEmployes as $lEmploye) {
 
@@ -40,8 +40,8 @@ if (!isset($_SESSION["email"])) {
 			echo "<td>$email</td>";
 			echo "<td>$motpasse</td>";
 			echo "<td>$statut</td>";
-            echo "<td><a href=\"editeremploye.php?id=" . $idemploye . "\">&#128465;&#65039; Supprimer</a></td>";
-            echo "<td><a href=\"editeremploye.php?id=" . $idemploye . "\">&#128395;&#65039; Editer</a></td>";
+            echo "<td><a href=\"modifierLEmploye.php?id=" . $idemploye . "\">&#128465;&#65039; Supprimer</a></td>";
+            echo "<td><a href=\"modifierLEmploye.php?id=" . $idemploye . "\">&#128395;&#65039; Modifier</a></td>";
             echo "</tr>";
         }
         echo "</form>";
@@ -49,7 +49,7 @@ if (!isset($_SESSION["email"])) {
     </tbody>
 </table>
 <br>
-<a href="creeremploye.php">&#128395; Pour créer un employé, c'est ici</a>
+<a href="creerLEmploye.php">&#128395; Pour créer un employé, c'est ici</a>
 <?php
 include_once ("_piedpage.inc.php");
 ?>

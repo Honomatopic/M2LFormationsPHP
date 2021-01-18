@@ -10,6 +10,6 @@
 
 </fieldset>
 <br>
-<a href="liretouteslessalles.php">&#128269; Voir toutes les salles
+<a href="consulterToutesLesSalles.php">&#128269; Voir toutes les salles
 </a>
 <?php include_once ("_piedpage.inc.php"); ?>

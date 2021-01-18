@@ -13,7 +13,7 @@ if (isset($_POST["connecter"], $_POST["email"], $_POST["motpasse"])) {
             $_SESSION["motpasse"] = $lemploye["motpasse"];
             $_SESSION["statut"] = $lemploye["statut"];
             echo "<section class=\"reussie\">Votre connexion a réussie</section>";
-            header("location:espaceemploye.php");
+            header("location:espaceDeLEmploye.php");
         }
     } else {
         echo "<section class=\"echoue\">Votre connexion a échoué</section>";
