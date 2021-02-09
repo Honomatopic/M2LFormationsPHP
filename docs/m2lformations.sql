@@ -74,7 +74,6 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `m2lformations`.`intervenant` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `nom` VARCHAR(255) NULL,
-  `prenom` VARCHAR(255) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

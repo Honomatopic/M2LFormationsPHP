@@ -7,7 +7,7 @@ include_once ("connecterLEmploye.traitement.php");
 include_once ("deconnecterLEmploye.traitement.php");
 include_once ("creerLEmploye.traitement.php");
 include_once ("supprimerLEmploye.traitement.php");
-include_once ("modifierlEmploye.traitement.php");
+include_once ("modifierLEmploye.traitement.php");
 include_once ("creerLaFormation.traitement.php");
 include_once ("supprimerLaFormation.traitement.php");
 include_once ("modifierLaFormation.traitement.php");

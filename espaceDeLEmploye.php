@@ -24,7 +24,6 @@ if (!isset($_SESSION["email"])) {
         <?php
         $mesSessions = consulterMesSessions($_SESSION["id"]);
         echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
-        
             foreach ($mesSessions as $maSession) {
                 $idsession = $maSession["id"];
                 $intitule = $maSession["intitule_formation"];
