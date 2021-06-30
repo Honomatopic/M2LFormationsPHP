@@ -11,10 +11,6 @@ function gestionnaireDeConnexion() {
     $bdd_options = "--client_encoding=UTF8";
     $cnx = pg_connect("host=$bdd_hote dbname=$bdd_nom user=$bdd_utilisateur password=$bdd_motpasse options=$bdd_options")
             or die("Pas de connexion à la base de données");
-    /* if (mysqli_connect_errno()) {
-      echo "Echec de la connexion : " . mysqli_connect_error();
-      exit();
-      } */
     return $cnx;
 }
 
