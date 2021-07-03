@@ -23,9 +23,10 @@ if (!isset($_SESSION["email"])) {
     <tbody>
         <?php
         $mesSessions = consulterMesSessions($_SESSION["id"]);
+ 
         echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
             foreach ($mesSessions as $maSession) {
-                $idsession = $maSession["id"];
+                $idsession = $maSession["id_session"];
                 $intitule = $maSession["intitule_formation"];
                 $datedebut = $maSession["datedebut"];
                 $datefin = $maSession["datefin"];
