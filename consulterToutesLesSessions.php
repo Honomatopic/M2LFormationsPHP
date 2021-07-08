@@ -28,7 +28,7 @@ if (!isset($_SESSION["email"])) {
         echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
         foreach ($lesSessions as $laSession) {
 
-            $idsession = $laSession["id_session"];
+            $idsession = $laSession["id"];
             $formation = $laSession["intitule_formation"];
             $datedebut = $laSession["datedebut"];
             $datefin = $laSession["datefin"];

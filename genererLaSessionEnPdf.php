@@ -12,7 +12,7 @@ $pdf->SetFont('Calibri', '', 16);
 $laSession = consulterLesInformationsDeLaSessionParLId($_GET["id"]);
 $pdf->SetTitle($laSession["intitule_formation"]);
 $pdf->Image('images/m2l.png', 50, 20, 100);
-$pdf->Text(100, 100, $laSession["id_session"]);
+$pdf->Text(100, 100, $laSession["id"]);
 $pdf->Text(100, 110, utf8_decode($laSession["intitule_formation"]));
 $pdf->Text(90, 120, date("d/m/Y", strtotime($laSession["datedebut"])));
 $pdf->Text(90, 130, date("d/m/Y", strtotime($laSession["datefin"])));

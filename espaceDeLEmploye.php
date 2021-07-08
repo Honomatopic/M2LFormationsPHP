@@ -26,7 +26,7 @@ if (!isset($_SESSION["email"])) {
  
         echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
             foreach ($mesSessions as $maSession) {
-                $idsession = $maSession["id_session"];
+                $idsession = $maSession["id"];
                 $intitule = $maSession["intitule_formation"];
                 $datedebut = $maSession["datedebut"];
                 $datefin = $maSession["datefin"];

@@ -464,7 +464,7 @@ function seDesinscrireDeMaSession($employe_id, $session_id) {
 function consulterMesSessions($employe_id) {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
-        $req = "SELECT session.id_session, formation.intitule AS intitule_formation, 
+        $req = "SELECT session.id, formation.intitule AS intitule_formation, 
     duree.datedebut, duree.datefin, 
     salle.nom AS nom_salle, 
     intervenant.nom AS nom_intervenant, 
@@ -475,7 +475,7 @@ function consulterMesSessions($employe_id) {
     JOIN salle ON session.salle_id = salle.id 
     JOIN intervenant ON session.intervenant_id = intervenant.id
     JOIN prestataire ON session.prestataire_id = prestataire.id
-    JOIN inscrire ON session.id_session = inscrire.session_id 
+    JOIN inscrire ON session.id = inscrire.session_id 
     JOIN employe ON inscrire.employe_id = employe.id
     WHERE employe.id = '$employe_id'";
         $requete_exec = pg_query($cnx, $req);
@@ -490,7 +490,7 @@ function consulterMesSessions($employe_id) {
 function consulterToutesLesSessions() {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
-        $req = "SELECT session.id_session, formation.intitule AS intitule_formation, 
+        $req = "SELECT session.id, formation.intitule AS intitule_formation, 
         duree.datedebut, duree.datefin, 
         salle.nom AS nom_salle, 
         intervenant.nom AS nom_intervenant, 
@@ -513,7 +513,7 @@ function consulterToutesLesSessions() {
 function consulterLesInformationsDeLaSessionParLId($id) {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
-        $req = "SELECT session.id_session, formation.intitule AS intitule_formation, 
+        $req = "SELECT session.id, formation.intitule AS intitule_formation, 
         duree.datedebut, duree.datefin, 
         salle.nom AS nom_salle, 
         intervenant.nom AS nom_intervenant, 
@@ -524,7 +524,7 @@ function consulterLesInformationsDeLaSessionParLId($id) {
         JOIN salle ON session.salle_id = salle.id 
         JOIN intervenant ON session.intervenant_id = intervenant.id 
         JOIN prestataire ON session.prestataire_id = prestataire.id 
-        WHERE session.id_session='$id'";
+        WHERE session.id='$id'";
         $requete_exec = pg_query($cnx, $req);
         $laSessionParId = pg_fetch_assoc($requete_exec);
     } else {
@@ -537,7 +537,7 @@ function consulterLesInformationsDeLaSessionParLId($id) {
 function consulterLesSessionsParLId($id) {
     $cnx = gestionnaireDeConnexion();
     if ($cnx != NULL) {
-        $req = "SELECT * FROM session WHERE id_session='$id'";
+        $req = "SELECT * FROM session WHERE id='$id'";
         $requete_exec = pg_query($cnx, $req);
         $laSessionParId = pg_fetch_assoc($requete_exec);
     } else {
