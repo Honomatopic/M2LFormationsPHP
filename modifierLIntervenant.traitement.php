@@ -4,7 +4,6 @@ require_once ("_entete.inc.php");
 // Algorithme permettant de modifier un intervenant
 if (isset($_POST["modifierintervenant"])) {
     if (isset($_POST["id"], $_POST["nom"])) {
-        $cnx = pg_connect("host=localhost dbname=m2lformations user=root password=root options=--client_encoding=UTF8") or die("Pas de connexion à la base de données");
         $req = "UPDATE intervenant SET nom='".$_POST["nom"]."' WHERE id='".$_POST["id"]."'";
         pg_query($cnx, $req);
         echo "<section class=\"reussie\">L'intervenant est bien modifié</section>";

@@ -1,5 +1,7 @@
 <?php
 session_start();
+$cnx = pg_connect("host=localhost dbname=m2lformations user=root password=root options=--client_encoding=UTF8")
+or die("Pas de connexion à la base de données");
 $_SESSION["prenom"] = (isset($_SESSION["prenom"])) ? $_SESSION["prenom"] :'';
 $_SESSION["statut"] = (isset($_SESSION["statut"])) ? $_SESSION["statut"] :'';
 

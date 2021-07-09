@@ -5,7 +5,6 @@ $pdf = new FPDF();
 $pdf->AddPage();
 $pdf->AddFont('Calibri', '', 'calibri.php');
 $pdf->SetFont('Calibri', '', 16);
-$cnx = pg_connect("host=localhost dbname=m2lformations user=root password=root options=--client_encoding=UTF8") or die("Pas de connexion à la base de données");
 $req = "SELECT session.id, formation.intitule AS intitule_formation,
         duree.datedebut, duree.datefin,
         salle.nom AS nom_salle,

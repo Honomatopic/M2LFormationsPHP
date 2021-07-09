@@ -19,8 +19,6 @@ if (!isset($_SESSION["email"])) {
     </thead>
     <tbody>
         <?php
-        $cnx = pg_connect("host=localhost dbname=m2lformations user=root password=root options=--client_encoding=UTF8")
-        or die("Pas de connexion à la base de données");
         $req = "SELECT * FROM prestataire";
         $requete_exec = pg_query($cnx, $req);
         echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";

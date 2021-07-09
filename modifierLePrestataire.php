@@ -1,7 +1,6 @@
 <?php
 require_once ("_entete.inc.php");
 if (isset($_GET["id"])) {
-    $cnx = pg_connect("host=localhost dbname=m2lformations user=root password=root options=--client_encoding=UTF8") or die("Pas de connexion à la base de données");
     $req = "SELECT * FROM prestataire WHERE id='".$_GET["id"]."'";
     $requete_exec = pg_query($cnx, $req);
     

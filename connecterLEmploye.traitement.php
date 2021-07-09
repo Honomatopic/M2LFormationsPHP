@@ -3,8 +3,6 @@ require_once ("_entete.inc.php");
 
 // Algorithme qui permet aux employés de se connecter
 if (isset($_POST["connecter"], $_POST["email"], $_POST["motpasse"])) {
-    $cnx = pg_connect("host=localhost dbname=m2lformations user=root password=root options=--client_encoding=UTF8")
-    or die("Pas de connexion à la base de données");
     $req = "SELECT * FROM employe WHERE email='".$_POST["email"]."'";
     $requete_exec = pg_query($cnx, $req);
     while ($lemploye = pg_fetch_assoc($requete_exec)) {
