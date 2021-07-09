@@ -18,9 +18,6 @@ if (isset($_POST["connecter"], $_POST["email"], $_POST["motpasse"])) {
         } else {
             echo "<section class=\"echoue\">Votre connexion a échoué</section>";
         }
-
         pg_close($cnx);
     }
-    // $lemploye = seConnecter($_POST["email"]);
-    // if (isset($lemploye)) {
 }
