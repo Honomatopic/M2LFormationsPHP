@@ -1,5 +1,5 @@
 <?php
-include_once ("_entete.inc.php");
+require_once ("_entete.inc.php");
 
 // Algorithme qui permet à l'employé de se déconnecter de son espace
 if (isset($_POST["deconnecter"])) {

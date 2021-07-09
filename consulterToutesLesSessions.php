@@ -1,5 +1,5 @@
 <?php
-include_once ("_entete.inc.php");
+require_once ("_entete.inc.php");
 if (!isset($_SESSION["email"])) {
     header("location:index.php");
 }
@@ -24,35 +24,41 @@ if (!isset($_SESSION["email"])) {
     </thead>
     <tbody>
         <?php
-        $lesSessions = consulterToutesLesSessions();
+        $cnx = pg_connect("host=localhost dbname=m2lformations user=root password=root options=--client_encoding=UTF8")
+        or die("Pas de connexion à la base de données");
+        $req = "SELECT session.id, formation.intitule AS intitule_formation,
+        duree.datedebut, duree.datefin,
+        salle.nom AS nom_salle,
+        intervenant.nom AS nom_intervenant,
+        prestataire.nom AS nom_prestataire
+        FROM session
+        JOIN formation ON session.formation_id = formation.id
+        JOIN duree ON session.duree_id = duree.id
+        JOIN salle ON session.salle_id = salle.id
+        JOIN intervenant ON session.intervenant_id = intervenant.id
+        JOIN prestataire ON session.prestataire_id = prestataire.id";
+        $requete_exec = pg_query($cnx, $req);
         echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
-        foreach ($lesSessions as $laSession) {
-
-            $idsession = $laSession["id"];
-            $formation = $laSession["intitule_formation"];
-            $datedebut = $laSession["datedebut"];
-            $datefin = $laSession["datefin"];
-            $salle = $laSession["nom_salle"];
-            $nomintervenant = $laSession["nom_intervenant"];
-            $prestataire = $laSession["nom_prestataire"];
+        while ($laSession = pg_fetch_assoc($requete_exec)) {
             echo "<tr>";
-            echo "<td>$idsession</td>";
-            echo "<td>$formation</td>";
-            echo "<td>". date("d/m/Y", strtotime($datedebut))."</td>";
-            echo "<td>". date("d/m/Y", strtotime($datefin))."</td>";
-            echo "<td>$salle</td>";
-            echo "<td>$nomintervenant</td>";
-            echo "<td>$prestataire</td>";
-            echo "<td><a href=\"modifierLaSession.php?id=" . $idsession . "\">&#128465;&#65039; Supprimer</a></td>";
-            echo "<td><a href=\"modifierLaSession.php?id=" . $idsession . "\">&#128395;&#65039; Modifier</a></td>";
+            echo "<td>".$laSession["id"]."</td>";
+            echo "<td>".$laSession["intitule_formation"]."</td>";
+            echo "<td>". date("d/m/Y", strtotime($laSession["datedebut"]))."</td>";
+            echo "<td>". date("d/m/Y", strtotime($laSession["datefin"]))."</td>";
+            echo "<td>".$laSession["nom_salle"]."</td>";
+            echo "<td>".$laSession["nom_intervenant"]."</td>";
+            echo "<td>".$laSession["nom_prestataire"]."</td>";
+            echo "<td><a href=\"modifierLaSession.php?id=" . $laSession["id"] . "\">&#128465;&#65039; Supprimer</a></td>";
+            echo "<td><a href=\"modifierLaSession.php?id=" . $laSession["id"] . "\">&#128395;&#65039; Modifier</a></td>";
             echo "</tr>";
         }
         echo "</form>";
+        pg_close($cnx);
         ?>
     </tbody>
 </table>
 <br>
 <a href="creerLaSession.php">&#128395; Pour créer une session de formation, c'est ici</a>
 <?php
-include_once ("_piedpage.inc.php");
+require_once ("_piedpage.inc.php");
 ?>

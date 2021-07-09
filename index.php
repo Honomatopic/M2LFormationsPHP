@@ -1,6 +1,6 @@
 <?php
 // Page d'accueil de l'application M2L
-include_once ("_entete.inc.php");
+require_once ("_entete.inc.php");
 ?>
 
 
@@ -18,5 +18,5 @@ include_once ("_entete.inc.php");
 <br>
 <a href="creerLEmploye.php">&#128395;&#65039; Pour s'inscrire</a>
 <?php
-include_once ("_piedpage.inc.php");
+require_once ("_piedpage.inc.php");
 ?>

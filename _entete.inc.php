@@ -2,32 +2,32 @@
 session_start();
 $_SESSION["prenom"] = (isset($_SESSION["prenom"])) ? $_SESSION["prenom"] :'';
 $_SESSION["statut"] = (isset($_SESSION["statut"])) ? $_SESSION["statut"] :'';
-include_once ("_gestionBase.inc.php");
-include_once ("connecterLEmploye.traitement.php");
-include_once ("deconnecterLEmploye.traitement.php");
-include_once ("creerLEmploye.traitement.php");
-include_once ("supprimerLEmploye.traitement.php");
-include_once ("modifierLEmploye.traitement.php");
-include_once ("creerLaFormation.traitement.php");
-include_once ("supprimerLaFormation.traitement.php");
-include_once ("modifierLaFormation.traitement.php");
-include_once ("creerLaDuree.traitement.php");
-include_once ("supprimerLaDuree.traitement.php");
-include_once ("modifierLaDuree.traitement.php");
-include_once ("creerLIntervenant.traitement.php");
-include_once ("supprimerLIntervenant.traitement.php");
-include_once ("modifierLIntervenant.traitement.php");
-include_once ("creerLePrestataire.traitement.php");
-include_once ("supprimerLePrestataire.traitement.php");
-include_once ("modifierLePrestataire.traitement.php");
-include_once ("creerLaSalle.traitement.php");
-include_once ("supprimerLaSalle.traitement.php");
-include_once ("modifierLaSalle.traitement.php");
-include_once ("creerLaSession.traitement.php");
-include_once ("supprimerLaSession.traitement.php");
-include_once ("modifierLaSession.traitement.php");
-include_once ("sInscrireALaSession.traitement.php");
-include_once ("seDesinscrireDeMaSession.traitement.php");
+
+require_once ("connecterLEmploye.traitement.php");
+require_once ("deconnecterLEmploye.traitement.php");
+require_once ("creerLEmploye.traitement.php");
+require_once ("supprimerLEmploye.traitement.php");
+require_once ("modifierLEmploye.traitement.php");
+require_once ("creerLaFormation.traitement.php");
+require_once ("supprimerLaFormation.traitement.php");
+require_once ("modifierLaFormation.traitement.php");
+require_once ("creerLaDuree.traitement.php");
+require_once ("supprimerLaDuree.traitement.php");
+require_once ("modifierLaDuree.traitement.php");
+require_once ("creerLIntervenant.traitement.php");
+require_once ("supprimerLIntervenant.traitement.php");
+require_once ("modifierLIntervenant.traitement.php");
+require_once ("creerLePrestataire.traitement.php");
+require_once ("supprimerLePrestataire.traitement.php");
+require_once ("modifierLePrestataire.traitement.php");
+require_once ("creerLaSalle.traitement.php");
+require_once ("supprimerLaSalle.traitement.php");
+require_once ("modifierLaSalle.traitement.php");
+require_once ("creerLaSession.traitement.php");
+require_once ("supprimerLaSession.traitement.php");
+require_once ("modifierLaSession.traitement.php");
+require_once ("sInscrireALaSession.traitement.php");
+require_once ("seDesinscrireDeMaSession.traitement.php");
 ?>
 
 <!DOCTYPE html>

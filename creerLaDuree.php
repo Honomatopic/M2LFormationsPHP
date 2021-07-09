@@ -1,4 +1,4 @@
-<?php include_once ("_entete.inc.php"); 
+<?php require_once ("_entete.inc.php"); 
 
 
 ?>
@@ -15,4 +15,4 @@
 </fieldset>
 <br>
 <a href="consulterToutesLesDurees.php">&#128269; Voir toutes les durées</a>
-<?php include_once ("_piedpage.inc.php"); ?>
+<?php require_once ("_piedpage.inc.php"); ?>

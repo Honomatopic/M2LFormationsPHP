@@ -1,4 +1,4 @@
-<?php include_once ("_entete.inc.php"); ?>
+<?php require_once ("_entete.inc.php"); ?>
 <h2>Pour créer une salle</h2>
 <fieldset>
 	<legend>Pour créer une salle</legend>
@@ -12,4 +12,4 @@
 <br>
 <a href="consulterToutesLesSalles.php">&#128269; Voir toutes les salles
 </a>
-<?php include_once ("_piedpage.inc.php"); ?>
+<?php require_once ("_piedpage.inc.php"); ?>

@@ -1,4 +1,4 @@
-<?php include_once ("_entete.inc.php"); ?>
+<?php require_once ("_entete.inc.php"); ?>
 <h2>Pour créer un intervenant</h2>
 <fieldset>
 	<legend>Pour créer un intervenant</legend>
@@ -11,4 +11,4 @@
 </fieldset>
 <br>
 <a href="consulterToutLesIntervenants.php">&#128269; Voir toutes les intervenants</a>
-<?php include_once ("_piedpage.inc.php"); ?>
+<?php require_once ("_piedpage.inc.php"); ?>

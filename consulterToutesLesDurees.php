@@ -1,5 +1,5 @@
 <?php
-include_once ("_entete.inc.php");
+require_once ("_entete.inc.php");
 if (!isset($_SESSION["email"])) {
     header("location:index.php");
 }
@@ -20,27 +20,28 @@ if (!isset($_SESSION["email"])) {
     </thead>
     <tbody>
         <?php
-        $lesDurees = consulterToutesLesDurees();
+        $cnx = pg_connect("host=localhost dbname=m2lformations user=root password=root options=--client_encoding=UTF8")
+        or die("Pas de connexion à la base de données");
+        $req = "SELECT * FROM duree";
+        $requete_exec = pg_query($cnx, $req);
+        
         echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
-        foreach ($lesDurees as $laDuree) {
-
-            $idduree = $laDuree["id"];
-            $datedebut = $laDuree["datedebut"];
-            $datefin = $laDuree["datefin"];
+        while($laDuree = pg_fetch_assoc($requete_exec)) {
             echo "<tr>";
-            echo "<td>$idduree</td>";
-            echo "<td>".date("d/m/Y", strtotime($datedebut))."</td>";
-            echo "<td>".date("d/m/Y", strtotime($datefin))."</td>";
-            echo "<td><a href=\"modifierLaDuree.php?id=" . $idduree . "\">&#128465;&#65039; Supprimer</a></td>";
-            echo "<td><a href=\"modifierLaDuree.php?id=" . $idduree . "\">&#128395;&#65039; Modifier</a></td>";
+            echo "<td>".$laDuree["id"]."</td>";
+            echo "<td>".date("d/m/Y", strtotime($laDuree["datedebut"]))."</td>";
+            echo "<td>".date("d/m/Y", strtotime($laDuree["datefin"]))."</td>";
+            echo "<td><a href=\"modifierLaDuree.php?id=" . $laDuree["id"] . "\">&#128465;&#65039; Supprimer</a></td>";
+            echo "<td><a href=\"modifierLaDuree.php?id=" . $laDuree["id"] . "\">&#128395;&#65039; Modifier</a></td>";
             echo "</tr>";
         }
         echo "</form>";
+        pg_close($cnx);
         ?>
     </tbody>
 </table>
 <br>
 <a href="creerLaDuree.php">&#128395; Pour créer une durée, c'est ici</a>
 <?php
-include_once ("_piedpage.inc.php");
+require_once ("_piedpage.inc.php");
 ?>

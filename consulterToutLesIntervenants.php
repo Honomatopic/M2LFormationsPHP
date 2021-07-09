@@ -1,5 +1,5 @@
 <?php
-include_once ("_entete.inc.php");
+require_once ("_entete.inc.php");
 if (!isset($_SESSION["email"])) {
     header("location:index.php");
 }
@@ -19,25 +19,26 @@ if (!isset($_SESSION["email"])) {
     </thead>
     <tbody>
         <?php
-        $lesIntervenants = consulterToutLesIntervenants();
+        $cnx = pg_connect("host=localhost dbname=m2lformations user=root password=root options=--client_encoding=UTF8")
+        or die("Pas de connexion à la base de données");
+        $req = "SELECT * FROM intervenant";
+        $requete_exec = pg_query($cnx, $req);
         echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
-        foreach ($lesIntervenants as $lintervenant) {
-
-            $idintervenant = $lintervenant["id"];
-            $nom = $lintervenant["nom"];
+        while ($lintervenant = pg_fetch_assoc($requete_exec)) {
             echo "<tr>";
-            echo "<td>$idintervenant</td>";
-            echo "<td>$nom</td>";
-            echo "<td><a href=\"modifierLIntervenant.php?id=" . $idintervenant . "\">&#128465;&#65039; Supprimer</a></td>";
-            echo "<td><a href=\"modifierLIntervenant.php?id=" . $idintervenant. "\">&#128395;&#65039; Modifier</a></td>";
+            echo "<td>".$lintervenant["id"]."</td>";
+            echo "<td>".$lintervenant["nom"]."</td>";
+            echo "<td><a href=\"modifierLIntervenant.php?id=" . $lintervenant["id"] . "\">&#128465;&#65039; Supprimer</a></td>";
+            echo "<td><a href=\"modifierLIntervenant.php?id=" . $lintervenant["id"]. "\">&#128395;&#65039; Modifier</a></td>";
             echo "</tr>";
         }
         echo "</form>";
+        pg_close($cnx);
         ?>
     </tbody>
 </table>
 <br>
 <a href="creerLIntervenant.php">&#128395; Pour créer un intervenant, c'est ici</a>
 <?php
-include_once ("_piedpage.inc.php");
+require_once ("_piedpage.inc.php");
 ?>

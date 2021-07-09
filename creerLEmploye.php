@@ -1,4 +1,4 @@
-<?php include_once ("_entete.inc.php"); ?>
+<?php require_once ("_entete.inc.php"); ?>
 <h2>Pour créer une employé</h2>
 <fieldset>
 	<legend>Pour créer un employé</legend>
@@ -19,4 +19,4 @@
 </fieldset>
 <br>
 <a href="consulterToutLesEmployes.php">&#128269; Voir toutes les employés</a>
-<?php include_once ("_piedpage.inc.php"); ?>
+<?php require_once ("_piedpage.inc.php"); ?>

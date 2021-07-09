@@ -1,4 +1,4 @@
-<?php include_once ("_entete.inc.php"); ?>
+<?php require_once ("_entete.inc.php"); ?>
 <h2>Pour créer une formation</h2>
 <fieldset>
 	<legend>Pour créer une formation</legend>
@@ -11,4 +11,4 @@
 </fieldset>
 <br>
 <a href="consulterToutesLesFormations.php">&#128269; Voir toutes les formations</a>
-<?php include_once ("_piedpage.inc.php"); ?>
+<?php require_once ("_piedpage.inc.php"); ?>
