@@ -1,5 +1,6 @@
 <?php
 require_once ("_entete.inc.php");
+$cnx = pg_connect("host=localhost dbname=m2lformations user=root password=root options=--client_encoding=UTF8") or die("Pas de connexion à la base de données");
 if (isset($_GET["id"])) {
     $req = "SELECT * FROM employe WHERE id='" . $_GET["id"] . "'";
     $requete_exec = pg_query($cnx, $req);
@@ -30,9 +31,8 @@ if (isset($_GET["id"])) {
 <?php
     endwhile
     ;
-    pg_close($cnx);
 }
 ;
 ?>
 <a href="consulterToutLesEmployes.php">&#128269; Voir les employés</a>
-<?php  require_once("_piedpage.inc.php"); ?>
+<?php pg_close($cnx); require_once("_piedpage.inc.php"); ?>

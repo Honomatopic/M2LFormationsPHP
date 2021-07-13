@@ -1,7 +1,8 @@
 <?php
 require_once ("_entete.inc.php");
+$cnx = pg_connect("host=localhost dbname=m2lformations user=root password=root options=--client_encoding=UTF8") or die("Pas de connexion à la base de données");
+$req = "SELECT * FROM session WHERE id='" . $_GET["id"] . "'";
 if (isset($_GET["id"])) {
-    $req = "SELECT * FROM session WHERE id='" . $_GET["id"] . "'";
     $requete_exec = pg_query($cnx, $req);
     ?>
 <h2>Pour modifier la session</h2>
@@ -96,4 +97,4 @@ if (isset($_GET["id"])) {
 	</form>
 </fieldset>
 <a href="consulterToutesLesSessions.php">&#128269; Voir les sessions</a>
-<?php pg_close($cnx); } require_once("_piedpage.inc.php"); ?>
+<?php } require_once("_piedpage.inc.php"); pg_close($cnx); ?>

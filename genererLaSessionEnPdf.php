@@ -1,6 +1,6 @@
 <?php
 require_once ('fpdf/fpdf.php');
-
+$cnx = pg_connect("host=localhost dbname=m2lformations user=root password=root options=--client_encoding=UTF8") or die("Pas de connexion à la base de données");
 $pdf = new FPDF();
 $pdf->AddPage();
 $pdf->AddFont('Calibri', '', 'calibri.php');

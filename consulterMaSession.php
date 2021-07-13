@@ -1,8 +1,6 @@
 <?php
 require_once ("_entete.inc.php");
-?>
-
-<?php
+$cnx = pg_connect("host=localhost dbname=m2lformations user=root password=root options=--client_encoding=UTF8") or die("Pas de connexion à la base de données");
 $req = "SELECT session.id, formation.intitule AS intitule_formation,
         duree.datedebut, duree.datefin,
         salle.nom AS nom_salle,
@@ -24,14 +22,11 @@ while ($laSession = pg_fetch_assoc($requete_exec)) {
     echo "<p>" . $laSession["nom_salle"] . "</p>";
     echo "<p>" . $laSession["nom_intervenant"] . "</p>";
     echo "<p>" . $laSession["nom_prestataire"] . "</p>";
-
-echo "<td></td>";
-
-
-echo "<a
-	href=seDesinscrireDeMaSession.traitement.php?eemploye_id=".$_SESSION["id"]."&ssession_id=".$laSession["id"]."><button>&#128395;&#65039;
+    echo "<td></td>";
+    echo "<a
+	href=seDesinscrireDeMaSession.traitement.php?eemploye_id=" . $_SESSION["id"] . "&ssession_id=" . $laSession["id"] . "><button>&#128395;&#65039;
 		Me désinscrire de cette formation</button></a>";
-echo "<a href=genererLaSessionEnPdf.php?id=".$laSession["id"]."><button>&#128195;
+    echo "<a href=genererLaSessionEnPdf.php?id=" . $laSession["id"] . "><button>&#128195;
 		Génerer le PDF</button></a>";
 }
 pg_close($cnx);

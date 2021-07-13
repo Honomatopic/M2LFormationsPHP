@@ -3,7 +3,6 @@ require_once ("_entete.inc.php");
 if (! isset($_SESSION["email"])) {
     header("location:index.php");
 }
-
 ?>
 
 <h2>Bienvenue. Voici l'ensemble des sessions de formations où vous êtes
@@ -23,6 +22,7 @@ if (! isset($_SESSION["email"])) {
 	</thead>
 	<tbody>
         <?php
+        $cnx = pg_connect("host=localhost dbname=m2lformations user=root password=root options=--client_encoding=UTF8") or die("Pas de connexion à la base de données");
         $req = "SELECT session.id, formation.intitule AS intitule_formation,
     duree.datedebut, duree.datefin,
     salle.nom AS nom_salle,
@@ -36,19 +36,18 @@ if (! isset($_SESSION["email"])) {
     JOIN prestataire ON session.prestataire_id = prestataire.id
     JOIN inscrire ON session.id = inscrire.session_id
     JOIN employe ON inscrire.employe_id = employe.id
-    WHERE employe.id = '".$_SESSION["id"]."'";
+    WHERE employe.id = '" . $_SESSION["id"] . "'";
         $requete_exec = pg_query($cnx, $req);
-
         echo "<form action=\"" . $_SERVER['PHP_SELF'] . " \"method=\"post\">";
         while ($maSession = pg_fetch_assoc($requete_exec)) {
             echo "<tr>";
-            echo "<td>".$maSession["id"]."</td>";
-            echo "<td>".$maSession["intitule_formation"]."</td>";
+            echo "<td>" . $maSession["id"] . "</td>";
+            echo "<td>" . $maSession["intitule_formation"] . "</td>";
             echo "<td>" . date("d/m/Y", strtotime($maSession["datedebut"])) . "</td>";
             echo "<td>" . date("d/m/Y", strtotime($maSession["datefin"])) . "</td>";
-            echo "<td>".$maSession["nom_salle"]."</td>";
-            echo "<td>".$maSession["nom_intervenant"]."</td>";
-            echo "<td>".$maSession["nom_prestataire"]."</td>";
+            echo "<td>" . $maSession["nom_salle"] . "</td>";
+            echo "<td>" . $maSession["nom_intervenant"] . "</td>";
+            echo "<td>" . $maSession["nom_prestataire"] . "</td>";
             echo "<td><a href=\"consulterMaSession.php?id=" . $maSession["id"] . "\">&#128270; Voir le détail</a></td>";
             echo "</tr>";
         }

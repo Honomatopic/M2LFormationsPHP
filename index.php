@@ -2,10 +2,7 @@
 // Page d'accueil de l'application M2L
 require_once ("_entete.inc.php");
 ?>
-
-
 <h1>Bienvenue sur le site de la M2L</h1>
-
 <fieldset>
 	<legend>Veuillez-vous connecter</legend>
 	<form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">

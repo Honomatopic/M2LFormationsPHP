@@ -3,7 +3,9 @@ require_once ("_entete.inc.php");
 
 // Algorithme qui permet aux employés de se connecter
 if (isset($_POST["connecter"], $_POST["email"], $_POST["motpasse"])) {
-    $req = "SELECT * FROM employe WHERE email='".$_POST["email"]."'";
+    $cnx = pg_connect("host=localhost dbname=m2lformations user=root password=root options=--client_encoding=UTF8")
+    or die("Pas de connexion à la base de données");
+    $req = "SELECT * FROM employe WHERE email='" . $_POST["email"] . "'";
     $requete_exec = pg_query($cnx, $req);
     while ($lemploye = pg_fetch_assoc($requete_exec)) {
         if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) /*&& password_verify($_POST["motpasse"], $lemploye["motpasse"])*/) {
@@ -18,6 +20,7 @@ if (isset($_POST["connecter"], $_POST["email"], $_POST["motpasse"])) {
         } else {
             echo "<section class=\"echoue\">Votre connexion a échoué</section>";
         }
-        pg_close($cnx);
     }
+    pg_close($cnx);
 }
+

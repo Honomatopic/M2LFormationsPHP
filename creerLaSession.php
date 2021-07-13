@@ -1,5 +1,6 @@
 <?php
 require_once ("_entete.inc.php");
+$cnx = pg_connect("host=localhost dbname=m2lformations user=root password=root options=--client_encoding=UTF8") or die("Pas de connexion à la base de données");
 ?>
 <h2>Pour créer une session de formation</h2>
 <fieldset>
@@ -52,12 +53,12 @@ while ($lIntervenant = pg_fetch_assoc($requete_exec)) {
 		</select> <br> <select name="prestataire">
 			<option value="">--Choisissez le prestataire--</option>
 			<?php
-			$reqprestataires = "SELECT * FROM prestataire";
-			$requete_exec = pg_query($cnx, $reqprestataires);
-			while ($lePrestataire = pg_fetch_assoc($requete_exec)) {
-			    echo "<option value=" . $lePrestataire["id"] . ">" . $lePrestataire["id"] . " - " . $lePrestataire["nom"] . "</option>";
-			}
-			;
+$reqprestataires = "SELECT * FROM prestataire";
+$requete_exec = pg_query($cnx, $reqprestataires);
+while ($lePrestataire = pg_fetch_assoc($requete_exec)) {
+    echo "<option value=" . $lePrestataire["id"] . ">" . $lePrestataire["id"] . " - " . $lePrestataire["nom"] . "</option>";
+}
+;
 ?>
 		</select> <br> <input type="submit" name="creersession"
 			value="&#128395; Créer">
@@ -66,4 +67,8 @@ while ($lIntervenant = pg_fetch_assoc($requete_exec)) {
 </fieldset>
 <br>
 <a href="consulterLesSessions.php">&#128269; Voir toutes les sessions </a>
-<?php require_once ("_piedpage.inc.php"); ?>
+<?php
+
+pg_close($cnx);
+require_once ("_piedpage.inc.php");
+?>
